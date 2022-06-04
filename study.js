@@ -1,12 +1,10 @@
-function myName() {
-    return console.log(this.name);
-}
+let user = {
+    name : 'soo',
+    age : 30
+};
 
-const p1 = { name : '2DC' };
-const p2 = { name : 'PJY' };
+let id = Symbol("id");
 
-p1.sayName = myName;
-p2.sayName = myName;
+user[id] = 1;
 
-p1.sayName();
-p2.sayName();
+console.log(user[id]);
