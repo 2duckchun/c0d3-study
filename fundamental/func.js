@@ -7,6 +7,5 @@ function checkOddEven(num) {
     return even; // 짝수
 };
 
-console.log(checkOddEven(1));
 
 module.exports = checkOddEven;
