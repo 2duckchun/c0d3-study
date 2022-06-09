@@ -1,0 +1,6 @@
+{
+    "name" : "2DC",
+    "age" : 30,
+    "alive" : true,
+    "hobby" : ["hiking", "running"]
+}
