@@ -1,11 +1,13 @@
 const express = require('express');
+const path = require('path');
 const app = express();
 const port = 3000;
+app.use('/static', express.static(path.join(__dirname, 'public')));
 
-app.get('/', function (req, res) {
-    res.send('hello Express!!')
+app.get('/2DC', (req, res) => {
+    res.sendFile(path.join(__dirname, '/index.html'))
 })
 
-app.listen(port, () => {
-    console.log(`포트가 실행중입니다. 포트번호 ${3000}`);
+app.listen(port, function () {
+    console.log('포트 실행 중');
 })

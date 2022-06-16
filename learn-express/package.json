@@ -1,13 +1,16 @@
 {
   "name": "learn-express",
   "version": "0.0.1",
-  "description": "express를 배우자",
+  "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "d"
+    "start": "nodemon app"
   },
   "author": "2DC",
   "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  },
   "dependencies": {
     "express": "^4.18.1"
   }
