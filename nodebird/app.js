@@ -13,10 +13,10 @@ const app = express();
 console.log(process.env);
 app.set('port', process.env.PORT || 3000);
 app.set('view engine', 'html');
-nunjucks.configure('views', {
+nunjucks.configure('view', {
     express: app,
     watch: true,
-});
+})
 
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
