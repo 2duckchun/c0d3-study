@@ -1,0 +1,23 @@
+<input class="inputText" type="text">
+<div class="container">
+    <button class="showButton">Show</button>
+</div>
+<script>
+    const box = document.querySelector('.container')
+    const input = document.querySelector('.inputText')
+    let button = document.querySelector('.showButton')
+
+    button.onclick = () => {
+        box.innerHTML = `
+        <h1>${input.value}</h1>
+        <button class="showButton">Show</button>
+        `
+    }
+    /*
+    Keep in mind that when you set the innerHTML property,
+    whatever was there previously is gone.
+    in other words, after setting the innerHTML of and element,
+    all variables forthe children elements are no longer usable.
+    */
+   
+</script>
