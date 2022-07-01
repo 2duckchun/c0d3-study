@@ -7,12 +7,15 @@
     const input = document.querySelector('.inputText')
     let button = document.querySelector('.showButton')
 
-    button.onclick = () => {
+    const prepareTheButton = () => {
         box.innerHTML = `
-        <h1>${input.value}</h1>
-        <button class="showButton">Show</button>
-        `
+            <h1>${input.value}</h1>
+            <button class="showButton">Show</button>
+            `
+        button = document.querySelector('.showButton')
+        button.onclick = prepareTheButton
     }
+    button.onclick = prepareTheButton
     /*
     Keep in mind that when you set the innerHTML property,
     whatever was there previously is gone.

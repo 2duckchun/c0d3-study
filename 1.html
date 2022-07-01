@@ -1,0 +1,15 @@
+<div class="container">
+<h1 class="h1">Hello</h1>
+</div>
+<input type="text" class="inputbox">
+<button class="button">Change</button>
+
+<script>
+    const div = document.querySelector('.container')
+    const input = document.querySelector('.inputbox')
+    const button = document.querySelector('.button')
+    const h1Element = document.querySelector('.h1')
+    button.onclick = () => {
+        h1Element.innerText = `${input.value}`
+    }
+</script>
