@@ -1,0 +1,24 @@
+<input class="input" type="number">
+<button class="button">Start</button>
+<h1 class="display"></h1>
+<script>
+    const input = document.querySelector('.input')
+    const button = document.querySelector('.button')
+    const display = document.querySelector('.display')
+    button.onclick = () => {
+        num = +input.value
+        if (num < 2) {
+            alert('2보다 큰 수를 입력하세요.')
+        }
+        /*
+        num에 속한 숫자 하나를 더 만듬 (num2)라고 하자.
+        num2가 num보다 커지면 화면 출력
+
+        num2는 2부터 시작해서 num까지 하나씩 상승함.
+        
+        상승할 때 소수인지 아닌지 파악해서 box에 담고 num2 = num2 + 1, 인덱스 하나 증가.
+        소수가 아니라면 그냥 num2 = num2 + 1, 인덱스 하나 증가.
+        */
+    }
+
+</script>

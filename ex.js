@@ -1,12 +1,13 @@
-let num = 5
-
-const helloTemplate = (num, i = 0, box = "") => {
-    if (num === i) {
+const parse = (str, i = 0, box="") => {
+    if (i >= str.length) {
         return box
     }
-    box = box + "hello"
-    return helloTemplate(num, i = i + 1, box)
-    }
-    const template = helloTemplate(num)
+    box = box + `<h1>str[i]</h1>`
+    return parse(str, i = i + 1, box)
+}
 
-    console.log(template);
+let str = "kimtaesoo"
+
+const a = parse(str)
+
+console.log(a);
