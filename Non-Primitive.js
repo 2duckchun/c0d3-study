@@ -63,3 +63,20 @@ console.log(c1);
 const a2 = [1, 2, 3] === [1, 2, 3] // 여전히 false다.
 // 컴퓨터는 배열 2개를 만들었다. 둘은 다른 주소를 가지고 있다.
 console.log(a2);
+
+//Variable Declarations
+const musicians = [1, 2, 3, 4]
+// Since arrays are non-primitive data,
+// musicians contains the address to the musicians array data.
+
+musicians[0] = 'Mozart'
+musicians[1] = 'Beethoven'
+musicians[2] = 'Liszt'
+musicians[3] = 'Chopin'
+
+// the data changed, but `musicians` itself contains an address.
+// the address stayed the same.
+// For all non-primitive data, you should always declare them with a
+// const because their address does not change.
+
+console.log(musicians);
