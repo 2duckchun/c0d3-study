@@ -80,3 +80,25 @@ musicians[3] = 'Chopin'
 // const because their address does not change.
 
 console.log(musicians);
+
+// Variable Assignments
+
+const avengers = ['Banner', 'Stark', 'Odinson', 'Rogers']
+const team = avengers
+avengers[1] = 'Fury'
+// what is avengers? = same reference
+// what is team? = same reference
+
+const guardians = ['Rocket', 2, 'Drax']
+const milano = guardians
+milano[milano[1]] = 'Quill'
+// What is guardians? // What is milano?
+// same reference;
+// ['Rocket', 2, 'Quill]
+
+const planets = ['Morag', 'Aakon', 'Xandar']
+let worlds = planets // worlds now has the same as planets 
+worlds = ['Earth', 'Contraxia', 'Berhart'] // worlds is the address of a 
+// new array
+// worlds: ['Earth', 'Contraxia', 'Berhart']
+// planets: ['Morag', 'Aakon', 'Xandar']
