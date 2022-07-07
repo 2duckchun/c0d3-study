@@ -102,3 +102,17 @@ worlds = ['Earth', 'Contraxia', 'Berhart'] // worlds is the address of a
 // new array
 // worlds: ['Earth', 'Contraxia', 'Berhart']
 // planets: ['Morag', 'Aakon', 'Xandar']
+
+const fruitPrices = [100, 150, 200];
+const addTax = (arr, i = 0) => {
+    if (i === arr.length) {
+        return arr
+    };
+    arr[i] = arr[i] * 1.1;
+    return addTax(arr, i + 1);
+};
+const cost = addTax(fruitPrices)
+// what is cost? : reference of fruitPrices
+// what is fruitPrices? : reference of fruitPrices
+
+const isSame = fruitPrices === cost // true
