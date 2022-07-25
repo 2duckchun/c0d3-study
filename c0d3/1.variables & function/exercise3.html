@@ -1,0 +1,11 @@
+<input class="inp" type="text">
+<button class="but">IS IT A BIG NUMBER!??????</button>
+<script>
+    const inp = document.querySelector('.inp')
+    const but = document.querySelector('.but')
+    but.onclick = () => {
+        if (+inp.value > 5) {
+            alert('Big')
+        }
+    }
+</script>

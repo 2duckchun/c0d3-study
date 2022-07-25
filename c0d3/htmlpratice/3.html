@@ -1,0 +1,36 @@
+<div class="container"></div>
+<h1 class="display">hello</h1>
+<script>
+    const div = document.querySelector('.container')
+    const display = document.querySelector('.display')
+    const appRun = () => {
+        div.innerHTML = `
+        <input class="firstInput" type="number">
+        <button class="startButton">Start</button>`
+        const firstInput = document.querySelector('.firstInput')
+        const startButton = document.querySelector('.startButton')
+
+        startButton.onclick = () => {
+            div.innerHTML = `
+            <input class="secondInput" type="number">
+            <button class="addButton">Add</button>
+            <button class="gobackButton">Go back</button>
+            `
+            const secondInput = document.querySelector('.secondInput')
+            const addButton = document.querySelector('.addButton')
+            const gobackButton = document.querySelector('.gobackButton')
+            display.innerText = `
+            ${+firstInput.value} + `
+            addButton.onclick = () => {
+                display.innerText = `
+                ${+firstInput.value} + ${+secondInput.value} = ${(+firstInput.value) + (+secondInput.value)}`
+                secondInput.value = 0
+            }
+            gobackButton.onclick = () => {
+                display.innerText = '';
+                appRun()
+            }
+        }
+    }
+    appRun()
+</script>

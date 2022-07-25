@@ -1,0 +1,31 @@
+<input class="inp1" type="text">
+<input class="inp2" type="text">
+<button class="generate">Generate</button>
+<input class="inp3" type="text">
+<button class="submit">submit</button>
+<script>
+    const inp1 = document.querySelector('.inp1')
+    const inp2 = document.querySelector('.inp2')
+    const inp3 = document.querySelector('.inp3')
+    const gb = document.querySelector('.generate')
+    const sb = document.querySelector('.submit')
+
+    const solution = (a, b) => {
+        return (c) => {
+            return a + b + c
+        }
+    }
+
+    let fun1
+
+    gb.onclick = () => {
+        const v1 = +inp1.value
+        const v2 = +inp2.value
+        fun1 = solution(+v1, +v2)
+    }
+
+    sb.onclick = () => {
+        const v3 = +inp3.value
+        alert(fun1(v3))
+    }
+</script>
