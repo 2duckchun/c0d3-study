@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>make divisible by 2 become 0</title>
+</head>
+<body>
+    <input type="text" class="input1">
+    <button class="button">make divisible by 2 become 0</button>
+    <script>
+        const input = document.querySelector('.input1')
+        const button = document.querySelector('.button')
+        button.onclick = () => {
+            if (+input.value % 2 === 0) {
+                input.value = "아니지롱"
+            } 
+        }
+    </script>
+</body>
+</html>

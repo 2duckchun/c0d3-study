@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>value property</title>
+</head>
+<body>
+    <input type="text" class="input1">
+    <button class="submit1">BUTTON</button>
+    <script>
+        const button = document.querySelector('.submit1')
+        const firstInput = document.querySelector('.input1')
+        button.onclick = () => {
+            alert(+firstInput.value)
+        }
+        // input 엘러멘트는 value 프로퍼티를 가지고 있음.
+        // 이것은 .value로 빼서 따로 쓸 수 있는 자료형임.
+        // type이 텍스트 = 이것은 문자열인 것을 기억하라.
+        // 숫자로 변환하고 싶다면 단항연산자 + 를 앞에 쓰면 된다.
+        // alert(+firstInput.value) 처럼...
+    </script>
+</body>
+</html>
