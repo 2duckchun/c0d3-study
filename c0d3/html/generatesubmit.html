@@ -1,0 +1,52 @@
+<input type="text" class="inp1">
+<input type="text" class="inp2">
+<button class="generate">generate</button>
+<button class="submit">submit</button>
+<script>
+    const inp1 = document.querySelector('.inp1')
+    const inp2 = document.querySelector('.inp2')
+    const generate = document.querySelector('.generate')
+    const submit = document.querySelector('.submit')
+
+    const solution = (v1, v2) => {
+        return () => {
+            return v1 + v2
+        }
+    }
+
+    let fun1;
+
+    generate.onclick = () => {
+        const v1 = +inp1.value
+        const v2 = +inp2.value
+        fun1 = solution(v1, v2)
+    }
+
+    submit.onclick = () => {
+        alert(fun1())
+    }
+
+    
+    // const firstInput = document.querySelector('.firstInput')
+    // const secondInput = document.querySelector('.secondInput')
+    // const generate = document.querySelector('.generate')
+    // const submit = document.querySelector('.submit')
+
+    // const gfunc = (v1, v2) => {
+    //     return () => {
+    //         return v1 + v2
+    //     }
+    // }
+
+    // let fun1;
+
+    // generate.onclick = () => {
+    //     alert(+firstInput.value)
+    //     const v1 = +firstInput.value
+    //     const v2 = +secondInput.value
+    //     fun1 = gfunc(+v1, +v2)
+    // }
+    // submit.onclick = () => {
+    //     alert(fun1())
+    // }
+</script>
