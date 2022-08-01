@@ -12,7 +12,7 @@
 // res = solution(2 ,3)(9)
 
 const solution = () => {
-    var counter = 0
+    counter = 0
     return () => {
         counter = counter + 1
         if (counter < 3) {
