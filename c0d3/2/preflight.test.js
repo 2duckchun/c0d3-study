@@ -78,3 +78,42 @@ describe('reverso function', () => {
       expect(callback).toHaveBeenCalledTimes(2)
     })
   })
+
+  describe('Prime Number 확인', () => {
+    it('음수값을 넣었을 때', () => {
+      const num = -5
+      const result = fn.isPrime1(num)
+      expect(result).toEqual(false)
+    })
+    it('소수를 넣었을 때', () => {
+      const num = 7
+      const result = fn.isPrime1(num)
+      expect(result).toEqual(true)
+    })
+    it('합성수를 넣었을 때', () => {
+      const num = 8
+      const result = fn.isPrime1(num)
+      expect(result).toEqual(false)
+    })
+  })
+
+  describe('소수값 저장', () => {
+    it('음수값을 넣었을 때', () => {
+      const start = -2
+      const getPrime1 = fn.primeMachine(start)
+      expect(getPrime1()).toEqual(2)
+      expect(getPrime1()).toEqual(3)
+    })
+    it('소수를 넣었을 때', () => {
+      const start = 5
+      const getPrime2 = fn.primeMachine(start)
+      expect(getPrime2()).toEqual(7)
+      expect(getPrime2()).toEqual(11)
+    })
+    it('합성수를 넣었을 때', () => {
+      const start = 6
+      const getPrime3 = fn.primeMachine(start)
+      expect(getPrime3()).toEqual(7)
+      expect(getPrime3()).toEqual(11)
+    })
+  })
