@@ -1,0 +1,46 @@
+<div class="container">
+</div>
+<h1 class="display"></h1>
+<script>
+    const container = document.querySelector('.container')
+    const display = document.querySelector('.display')
+    const solution = (firstInput) => {
+        return (secondInput) => {
+            return firstInput + secondInput
+        }
+    }
+    const startApp = () => {
+        display.innerText = ""
+        container.innerHTML = `
+        <input class="firstInput" type="number">
+        <button class="start">Start</button>
+        `
+        const startButton = document.querySelector('.start')
+        const firstinput = document.querySelector('.firstInput')
+
+        startButton.onclick = () => {
+            const firstValue = +firstinput.value
+            const add = solution(firstValue)            
+            container.innerHTML = `
+            <input class="secondInput" type="number">
+            <button class="add">Add</button>
+            <button class="goback">Go back</button>
+            `
+            display.innerText = `${firstValue} +`
+
+
+            const addButton = document.querySelector('.add')
+            addButton.onclick = () => {
+                const secondInput = document.querySelector('.secondInput')
+                const secondValue = +secondInput.value
+                const value = add(secondValue)
+                display.innerText = `${firstValue} + ${secondValue} = ${value}`
+                secondInput.value = null
+            }
+
+            const gobackButton = document.querySelector('.goback')
+            gobackButton.onclick = startApp
+        }
+    }
+    startApp()
+</script>
