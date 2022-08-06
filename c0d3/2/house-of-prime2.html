@@ -1,0 +1,42 @@
+<input class="input" type="number">
+<button class="button">Start</button>
+<div class="display"></div>
+<script>
+    const display = document.querySelector('.display')
+    const input = document.querySelector('.input')
+    const button = document.querySelector('.button')
+
+    isPrime = (num, i = 2) => {
+        if (num < 2) return false
+        if (num === i) return true
+        if (num % i === 0) return false
+        return isPrime(num, i + 1)
+    }
+
+    getPrime = (start, i = 1, result = "") => {
+        if (start < i) {
+            return result
+        }
+        if (isPrime(i)) {
+            result = result + `<h1>${i}</h1>`
+        }
+        return getPrime(start, i + 1, result)
+    }
+
+    button.onclick = () => {
+        const start = +input.value
+        if (start < 2) {
+            return alert('2보다 큰 값을 입력하세요.')
+        }
+        display.innerHTML = getPrime(start)
+    }
+
+    /* 아래는 함수 쓰기 전 미리 작성해놓은 블루프린트임. */
+
+    // 소수를 판별하는 식을 만들어야 함.
+    // Start 버튼을 누르면 입력한 수부터 소수인지 아닌 수를 파악해야함
+    // Start 버튼을 누른 뒤 소수들이 화면에 나오기 위해서는
+    // button.onclick은 어떠한 값을 return 해야함.(틀린 생각이었음.)
+    // 그 리턴값은 innerHTML이 되고 <h1>으로 끼워넣어져야함.
+
+</script>
