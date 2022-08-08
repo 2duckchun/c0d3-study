@@ -1,11 +1,13 @@
-const makeHello = (num, i = 1, result = "") => {
-    if (num < i) return result
-    if (i % 5 === 0) {
-        result = result + "hello " + "</br>"
-        return makeHello(num, i + 1, result)
+const getChat = () => {
+    const result = ""
+    return (value) => {
+        result = result + `<h1>${value}</h1>`
+        return result
     }
-    return makeHello(num, i + 1, result + "hello ")
-    }
+}
 
-    const b = makeHello(11)
-    console.log(b);
+const a = getChat()
+
+a("안녕하세여")
+a("안녕하세여")
+console.log(a);
