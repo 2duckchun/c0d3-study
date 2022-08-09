@@ -1,8 +1,28 @@
-<input>
-<button></button>
-<h1></h1>
-<div></div>
+<input class="strInput">
+<button class="start">Start</button>
+<h1 class="display"></h1>
+<div class="container"></div>
 <script>
-    // 구조적 위치와 스크립트의 위치를 생각하고
-    // 자바스크립트를 이용하여 비동기를 구현하면 sovle.
+    const strInput = document.querySelector('.strInput')
+    const startbutton = document.querySelector('.start')
+    const display = document.querySelector('.display')
+    const container = document.querySelector('.container')
+
+    const displayStr = (str, i = 0, result = "") => {
+        if (i === str.length) {
+            display.innerText = ""
+            container.innerHTML = `<h1>${str}</h1>${container.innerHTML}`
+            return
+        }
+        setTimeout(() => {
+            const newResult = `${result}${str[i]}`
+            display.innerText = newResult
+            displayStr(str, i+1, newResult)
+        }, 200);
+    }
+
+    startbutton.onclick = () => {
+        displayStr(strInput.value)
+        strInput.value = ""
+    }
 </script>
