@@ -20,8 +20,8 @@
 
     const timer = () => {
         if (!isRunning || isPause) return
+        time = time + 1
         setTimeout(() => {
-            time = time + 1
             let seconds = Math.floor(time / 100)
             let miliseconds = time % 100
             

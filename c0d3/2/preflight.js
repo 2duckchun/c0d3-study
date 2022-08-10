@@ -59,7 +59,40 @@ const primeMachine = (start) => {
     }
 }
 
+const selectiveZero = (arr, num, i = 0) => {
+    if (arr.length === i) {
+        return arr
+    }
+    if (arr[i] === num) {
+        arr[i] = 0
+    }
+    return selectiveZero(arr, num, i + 1)
+}
 
+const firstXToZero = (arr, num, i = 0) => {
+    if (arr.length === i || i >= num) {
+        return arr
+    }
+    arr[i] = 0
+    return firstXToZero(arr, num, i + 1)
+}
+
+const allPrime = (arr, i = 0) => {
+    if (arr.length === i) return true
+    if (!isPrime(arr[i])) return false
+    return allPrime(arr, i + 1)
+}
+
+const increasing = (arr, i = 0) => {
+    if (arr.length <= i) return true
+    if (arr[i] >= arr[i + 1]) return false
+    return increasing(arr, i + 1)
+}
+
+allFuns.increasing = increasing
+allFuns.allPrime = allPrime
+allFuns.firstXToZero = firstXToZero
+allFuns.selectiveZero = selectiveZero
 allFuns.removeCharX = removeCharX
 allFuns.less3Diff = less3Diff
 allFuns.reverso = reverso
