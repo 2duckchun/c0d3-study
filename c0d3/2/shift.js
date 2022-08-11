@@ -1,11 +1,10 @@
-const states = ['Delaware', 'Missouri', 'Hawaii']
-const firstState = states.shift()
-// firstState is "Delaeare" and states is now ["Missouri", "Hawaii"]
-
 const nuts = ['almond', 'pistachio', 'hazelnut']
 const seeds = nuts
-const drupe = nuts.shift()
+nuts.unshift(seeds)
 
-// nut = ['pistachio', 'hazelnut']
-// seed =  ['pistachio', 'hazelnut']
-// drupe = 'almond'
+console.log(`nuts : `, nuts);
+console.log(`seeds : `, seeds);
+
+const states = ['Pennsylvania', 'New Jersey', 'Georgia']
+const numStates = states.unshift('Delaware', 'New York')
+console.log(numStates);
