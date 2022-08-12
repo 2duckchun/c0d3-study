@@ -30,11 +30,37 @@ const copyReverse = (arr, result = [], i = 1) => {
 }
 
 const copyLast = (arr, num, result = [], i = num) => {
-    if (arr.length <= i) return result
+    if (arr.length <= i) {
+        return result
+    }
     result.push(arr[i])
     return copyLast(arr, num, result, i + 1)
 }
 
+const copyFirst = (arr, num, result = [], i = 0) => {
+    if (arr.length - num <= i) {
+        return result
+    }
+    result.push(arr[i])
+    return copyFirst(arr, num, result, i + 1)
+}
+
+const runOnEach = (arr, f, result = [], i = 0) => {
+    if (arr.length === i) return result
+    result.push(f(arr[i], i))
+    return runOnEach(arr, f, result, i + 1)
+}
+
+const onlyIndex = (arr, num, result = [], i = 0) => {
+    if (arr.length <= i) return result
+    if (num >= arr[0].length) return result
+    result.push(arr[i][num])
+    return onlyIndex(arr, num, result, i + 1)
+}
+
+allFuns.onlyIndex = onlyIndex
+allFuns.runOnEach = runOnEach
+allFuns.copyFirst = copyFirst
 allFuns.copyLast = copyLast
 allFuns.copyReverse = copyReverse
 allFuns.copyWithout = copyWithout
