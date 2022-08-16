@@ -1,0 +1,12 @@
+<input type="text" class="first" />
+<input type="text" class="second" />
+<button class="button">Get The SUM!!!!!</button>
+<script>
+  const firstInput = document.querySelector(".first");
+  const secondInput = document.querySelector(".second");
+  const button = document.querySelector(".button");
+  button.onclick = () => {
+    sum = +firstInput.value + +secondInput.value;
+    alert(sum);
+  };
+</script>
