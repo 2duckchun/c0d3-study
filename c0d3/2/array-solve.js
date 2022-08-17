@@ -24,9 +24,6 @@ const firstXToZero = (arr, num) => {
     })
 }
 
-const isNonPrime = (num, i = 2) => {
-
-}
 
 const isPrime = (num, i = 2) => {
     if (num < 2) return false
@@ -137,6 +134,59 @@ const largerThan5 = (arr) => {
     }, [])
 }
 
+Array.prototype.getEvens = function(i = 0, result = []) {
+    if (this.length === i) return result
+    if (this[i] % 2 === 0) result.push(this[i])
+    return this.getEvens(i + 1, result)
+}
+
+Array.prototype.sum = function() {
+    if (this.length === 0) return undefined
+    return this.reduce((acc, e) => {
+        return acc + e
+    })
+}
+
+Array.prototype.pad = function(num, pad, i = 0) {
+    if (num <= i) return this
+    this.push(pad)
+    return this.pad(num, pad, i + 1)
+}
+
+Array.prototype.fizzbuzz = function() {
+    this.forEach((e, i, arr) => {
+        if (e % 3 === 0) arr[i] = 'fizz'
+        if (e % 5 === 0) arr[i] = 'buzz'
+        if (e % 3 === 0 && e % 5 === 0) arr[i] = 'fizzbuzz'
+    })
+}
+
+Array.prototype.removeEvens = function(i = 0) {
+    if (this.length === i) return this
+    if (this[i] % 2 === 0) {
+        this.splice(i, 1)
+        return this.removeEvens(i)
+    }
+    return this.removeEvens(i + 1)
+}
+
+Array.prototype.getIterator = function() {
+    let count = 0
+    return () => {
+        if (this.length === count) {
+            count = 0
+        }
+        count = count + 1
+        return this[count - 1]
+    }
+}
+
+allFuns.pad = this.pad
+allFuns.getIterator = this.getIterator
+allFuns.removeEvens = this.removeEvens
+allFuns.fizzbuzz = this.fizzbuzz
+allFuns.sum = this.sum
+allFuns.getEvens = this.getEvens
 allFuns.largerThan5 = largerThan5
 allFuns.combineLess5 = combineLess5
 allFuns.matches = matches
