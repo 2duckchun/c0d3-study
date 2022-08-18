@@ -153,13 +153,30 @@ Array.prototype.pad = function(num, pad, i = 0) {
     return this.pad(num, pad, i + 1)
 }
 
+// Array.prototype.fizzbuzz = function() {
+//     this.forEach((e, i, arr) => {
+//         if (e % 3 === 0) arr[i] = 'fizz'
+//         if (e % 5 === 0) arr[i] = 'buzz'
+//         if (e % 3 === 0 && e % 5 === 0) arr[i] = 'fizzbuzz'
+//     })
+// }
+
 Array.prototype.fizzbuzz = function() {
     this.forEach((e, i, arr) => {
-        if (e % 3 === 0) arr[i] = 'fizz'
-        if (e % 5 === 0) arr[i] = 'buzz'
-        if (e % 3 === 0 && e % 5 === 0) arr[i] = 'fizzbuzz'
+        if (e % 3 === 0 && e % 5 === 0) {
+          console.log(e, i, arr)
+          return arr[i] = 'fizzbuzz'
+        }
+        if (e % 3 === 0) {
+          console.log(e, i, arr)
+          return arr[i] = 'fizz'
+        }
+        if (e % 5 === 0) {
+          console.log(e, i, arr)
+          return arr[i] = 'buzz'
+        }
     })
-}
+  }
 
 Array.prototype.removeEvens = function(i = 0) {
     if (this.length === i) return this
@@ -173,13 +190,24 @@ Array.prototype.removeEvens = function(i = 0) {
 Array.prototype.getIterator = function() {
     let count = 0
     return () => {
-        if (this.length === count) {
-            count = 0
-        }
-        count = count + 1
-        return this[count - 1]
+      if (this.length === 0) {
+        return undefined
+      }
+      if (this.length <= count) {
+        count = 0
+      }
+      count = count + 1
+      return this[count - 1]
     }
-}
+  }
+
+// Array.prototype.getIterator = function () {
+//     let i = -1
+//     return () => {
+//       i = i + 1
+//       return this[i % this.length]
+//     }
+//   }
 
 allFuns.pad = this.pad
 allFuns.getIterator = this.getIterator

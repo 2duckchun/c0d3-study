@@ -1,21 +1,18 @@
-Array.prototype.fizzbuzz = function (i = 0) {
-    if (i === this.length) {
-      return this
-    }
-    if (this[i] % 5 === 0 && this[i] % 3 === 0) {
-      this[i] = 'fizzbuzz'
-    }
-    if (this[i] % 3 === 0) {
-      this[i] = 'fizz'
-    }
-    if (this[i] % 5 === 0) {
-      this[i] = 'buzz'
-    }
-    return this.fizzbuzz(i + 1)
-  }
+// const peppers = [5, 6, 6].map((e, i) => {
+//   setTimeout(() => {
+//     console.log(e)
+//     return 100
+//   }, 1000)
+// }) // what is peppers?
+
+// console.log(peppers)
 
 
-  const arr = [9, 80, 12, 2, 30, 15]
-arr.fizzbuzz()
+const friends = ['Tony Stark', 'Vision', 'Ultron'].reduce((a, b) => {
+  setTimeout(() => {
+    console.log('Greetings,', b)
+  }, 2000)
+  return a + b
+}, '')
 
-console.log(arr);
+console.log(friends);
