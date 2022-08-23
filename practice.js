@@ -1,24 +1,17 @@
-// const solution = () => {
-    Array.prototype.cReduce = function (cb, start = null, i = 0, acc = 0) {
-      if (this.length <= i) return acc
-      if (i === 0) {
-        acc = start
-      }
-      if (start === null) {
-        if (typeof this[i] === 'string') {
-          start = "Not use"
-          acc = ""
-        }
-      }
+const helper = (col, idx = 0, arr = []) => {
+  if (col <= idx) return arr
+  arr.push(0)
+  return helper(col, idx + 1, arr)
+}
 
-      acc = cb(acc, this[i], i, this)
-      return this.cReduce(cb, start, i + 1, acc)
-    }
-//   }
+const solution = (row, col, result = []) => {
+  if (row <= result.length) return result
+  result.push(helper(col))
+  return solution(row, col, result)
+}
 
-const result = [1,2,3].cReduce( (acc, e, i, arr) => {
-  console.log(acc, e, i, arr)
-  return acc + e
-})
+const a = solution(3, 5)
+console.log(a);
 
-console.log(result);
+const b = helper(5)
+console.log(b);
