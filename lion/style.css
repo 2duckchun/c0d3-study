@@ -6,7 +6,6 @@
 
 .main {
     width: 610px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
     margin-left: auto;
     margin-right: auto;
 }
@@ -20,18 +19,46 @@
 .header {
     text-align: right;
     margin-right: 15px;
-    padding-bottom: 30px;
-
+    margin-left: 15px;
+    box-shadow: 0 1.5px 3px 0 rgba(0, 0, 0, 0.1);
+    padding-right: 15px;
 }
 
 .part {
+    padding-top: 25px;
+    padding-bottom: 25px;
     border-top: 2px solid rgba(0, 0, 0, 0.5);
     margin-left: 15px;
     margin-right: 15px;
+}
+
+.float {
+    overflow: hidden;
+}
+
+.float-left {
+    float: left
+}
+
+.float-right {
+    float: right
 }
 
 .footer {
     text-align: center;
     color: white;
     background-color: black;
+}
+
+.ul {
+    margin-top: 0px;
+}
+
+.icon {
+    width: 35px;
+    height: 35px;
+}
+
+.part-icon {
+    text-align: right;
 }
