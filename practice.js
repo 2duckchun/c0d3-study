@@ -1,17 +1,13 @@
-const helper = (col, idx = 0, arr = []) => {
-  if (col <= idx) return arr
-  arr.push(0)
-  return helper(col, idx + 1, arr)
+Array.prototype.cReduce = function(cb, acc = 0, i = 0) {
+    if (this.length <= i) return acc
+    if (acc === 0 && i === 0 && typeof this[i] === 'string') {
+      acc = ""
+    }
+    acc = cb(acc, this[i], i, this)
+    return this.cReduce(cb, acc, i + 1)
 }
 
-const solution = (row, col, result = []) => {
-  if (row <= result.length) return result
-  result.push(helper(col))
-  return solution(row, col, result)
-}
-
-const a = solution(3, 5)
-console.log(a);
-
-const b = helper(5)
-console.log(b);
+const result = [5, 8, 7].cReduce((acc, e, i, arr) => {
+  console.log(acc, e, i, arr)
+  return acc + e + i
+}, 'hi')

@@ -1,0 +1,16 @@
+<div>
+    <button class="hello">Hello</button>
+    <button class="hello">Hola</button>
+    <button class="hello">Buna ziua</button>
+    <button class="hello">Aloha</button>
+    <h1 class="hello">Hi world</h1>
+</div>
+<script>
+    const hellos = document.querySelectorAll('.hello')
+    const buttons = document.querySelectorAll('button')
+    buttons.forEach((button, i) => {
+        return button.onclick = () => {
+            alert(`this is the button at index ${i}`)
+        }
+    })
+</script>
