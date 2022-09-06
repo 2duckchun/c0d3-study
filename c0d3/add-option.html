@@ -1,4 +1,4 @@
-<h1>Add Option</h1>
+<h1 class="display">Add Option</h1>
 <input type="text" class="input">
 <button class="button">Add</button>
 <div>
@@ -7,15 +7,13 @@
 <script>
     const inputElement = document.querySelector('.input')
     const buttonElement = document.querySelector('.button')
-    const selection = document.querySelector('.selection')
+    const select = document.querySelector('.selection')
     const options = []
-
     buttonElement.onclick = () => {
         const newValue = inputElement.value
         options.unshift(newValue)
-        selection.innerHTML = options.reduce((acc, e) => {
-            return acc + `<option>${e}</option>`
+        select.innerHTML = options.reduce((acc, e) => {
+            return acc + `<option value="${e}">${e}</option>`
         }, '')
     }
-
 </script>
