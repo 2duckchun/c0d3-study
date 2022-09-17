@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>greater than 5</title>
+</head>
+<body>
+    <input class="input1" type="number">
+    <button class="button">IS IT A BIG NUMBER!??????</button>
+    <script>
+        const input = document.querySelector('.input1')
+        const button = document.querySelector('.button')
+        button.onclick = () => {
+            if (+input.value > 5) {
+                return alert('big')
+            }
+        }
+    </script>
+</body>
+</html>

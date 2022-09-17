@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>generate-3-add</title>
+</head>
+<body>
+    <input class="input1" type="number">
+    <input class="input2" type="number">
+    <button class="btn-generate">generate</button>
+    <input class="input3" type="number">
+    <button class="btn-submit">submit</button>
+    <script>
+        const inp1 = document.querySelector('.input1')
+        const inp2 = document.querySelector('.input2')
+        const inp3 = document.querySelector('.input3')
+        const btn_generate = document.querySelector('.btn-generate')
+        const btn_submit = document.querySelector('.btn-submit')
+
+        const solution = (num1, num2) => {
+            return (num3) => {
+                return num1 + num2 + num3
+            }
+        }
+
+        let run;
+
+        btn_generate.onclick = () => {
+            const value1 = +inp1.value
+            const value2 = +inp2.value
+            run = solution(value1, value2)
+        }
+
+        btn_submit.onclick = () => {
+            const value3 = +inp3.value
+            alert(run(value3))
+        }
+
+    </script>
+</body>
+</html>

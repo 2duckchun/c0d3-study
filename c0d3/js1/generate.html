@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>generate</title>
+</head>
+<body>
+    <input class="input1" type="number">
+    <input class="input2" type="number">
+    <button class="btn-generate">generate</button>
+    <button class="btn-submit">submit</button>
+    <script>
+        const input1 = document.querySelector('.input1')
+        const input2 = document.querySelector('.input2')
+        const btn_generate = document.querySelector('.btn-generate')
+        const btn_submit = document.querySelector('.btn-submit')
+        const solution = (num1, num2) => {
+            return () => {
+                return num1 + num2
+            }
+        }
+        let answer;
+        btn_generate.onclick = () => {
+            const input1Value = +input1.value
+            const input2Value = +input2.value
+            answer = solution(input1Value, input2Value)
+        }
+        btn_submit.onclick = () => {
+            alert(answer())
+        }
+
+    </script>
+</body>
+</html>

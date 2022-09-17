@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUM - Greater than 10</title>
+</head>
+<body>
+    <input class="input1" type="number">
+    <input class="input2" type="number">
+    <button class="button">IS SUM greater than 10?</button>
+    <script>
+        const input1 = document.querySelector('.input1')
+        const input2 = document.querySelector('.input2')
+        const button = document.querySelector('.button')
+        button.onclick = () => {
+            alert((+input1.value + +input2.value) > 10)
+        }
+    </script>
+</body>
+</html>
