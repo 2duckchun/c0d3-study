@@ -17,3 +17,44 @@ describe('removeCharX function', () => {
       expect(result).toEqual('abc')
     })
   })
+
+  describe('reverso function', () => {
+    it('should reverse "sneakers"', () => {
+      const result = fn.reverso('sneakers')
+      expect(result).toEqual('srekaens')
+    })
+    it('should reverse strings of one letter', () => {
+      const result = fn.reverso('s')
+      expect(result).toEqual('s')
+    })
+    it('should return an empty string when given an empty string', () => {
+      const result = fn.reverso('')
+      expect(result).toEqual('')
+    })
+  })
+  
+  describe('delayAndCall function', () => {
+    jest.useFakeTimers()
+    it('should run function after 1000 milliseconds', () => {
+      const callback = jest.fn()
+      const fun = fn.delayAndCall(1000, callback)
+      fun()
+      expect(callback).not.toBeCalled() // It shouldn't run right away
+      jest.advanceTimersByTime(1000)
+      expect(callback).toBeCalled() // But after 1000ms
+      // it should have run
+    })
+    it('should run callback repeatedly', () => {
+      const callback = jest.fn()
+      const fun = fn.delayAndCall(1000, callback)
+      fun()
+      expect(callback).not.toBeCalled() // It shouldn't run right away
+      jest.runAllTimers()
+      expect(callback).toHaveBeenCalledTimes(1) // Should have been
+      // called once
+      fun()
+      jest.runAllTimers()
+      expect(callback).toHaveBeenCalledTimes(2) // Now it should have
+      // been called twice
+    })
+  })
