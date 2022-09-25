@@ -1,42 +1,14 @@
-// Write a function named primeMachine that takes in a number and returns a function.
-
-// Each time the returned function is called, return the next prime number (starting from the input number).
-// (For a new coder, this can be a hard problem. 
-// This problem was asked during an onsite interview, so it is okay if you can't come up with the answer yourself.
-// This problem involves creating other functions to help you get the correct solution.)
+// Write a function named selectiveZero that takes in an array and a number.
+// This function replaces the value of any elements of an array when the element's value matches the given number with a value of 0.
+// 이 함수는 배열의 엘리먼트 value를 대체한다. 엘리먼트 밸류와 인수로 받은 넘버가 같을때, 밸류를 0으로
 
 
-const isPrime = (num, i = 2) => {
-    if (num < 2) return false
-    if (num === i) return true
-    if (!(num % i)) return false
-    return isPrime(num, i + 1)
+const selectiveZero = (arr, num, i = 0) => {
+    if (arr.length <= i) return arr
+    if (arr[i] === num) arr[i] = 0
+    console.log(arr);
+    return selectiveZero(arr, num, i + 1)
 }
 
-const getNextPrime = (num) => {
-    if (isPrime(num)) {
-        return num
-    }
-    return getNextPrime(num + 1)
-}
-
-const primeMachine = (num) => {
-    if (num < 2) {
-        num = 2
-    }
-    getNextPrime(num)
-    return () => {
-        const result = getNextPrime(num)    
-    }
-}
-
-// 처음 입력된 수가 소수인지 확인해야함.
-// 소수라면 그 값을 출력하고 담아놓음
-// 소수가 아니라면 소수가 될때까지 어떤 함수를 동작해서 소수를 만들고 그 값을 담아놓음.
-
-
-const getPrime = primeMachine(10)
-getPrime() // 11
-getPrime() // 13
-getPrime() // 17
-getPrime() // 19
+const b = selectiveZero([5, 2, 2, 9], 2) // [5,0,0,9]
+console.log(b);

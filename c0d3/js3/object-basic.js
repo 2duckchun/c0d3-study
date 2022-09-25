@@ -28,3 +28,21 @@ const student2 = {
 const total = student1.age + student2.age
 console.log(total);
 
+console.log('hello')
+
+/*
+    console은 엔지니어가 우리를 위해 만든 오브젝트이다.
+    console은 log라는 key를 가지고 있으며, 그 key의 value는 function이었던 것이다.
+    따라서 console.log("hello")의 의미는...
+    console 이라는 object의 key중 하나인 log를 호출한 것이고
+    그 key에 상응하는 value는 어떤 기능을 하는 function(메서드)인 것이다.
+*/
+
+const console2 = {
+    log : (data) => {
+        alert(data)
+    }
+}
+
+console2.log('안녕하세요')
+console2.log('반갑습니다.')
