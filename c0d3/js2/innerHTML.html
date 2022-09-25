@@ -1,15 +1,5 @@
-<input class="inputText" type="text">
-<div class="container">
-    <button class="showButton">Show</button>
-</div>
+<h1 class="heading"></h1>
 <script>
-    const box = document.querySelector('.container')
-    const input = document.querySelector('.inputText')
-    let button = document.querySelector('.showButton')
-    button.onclick = () => {
-        box.innerHTML = `
-        <h1>${input.value}</h1>
-        <button class="showButton">Show</button>
-        `
-    }
+    const h1Element = document.querySelector('.heading')
+    h1Element.innerText = "The hardest choices require the strongest wills."
 </script>

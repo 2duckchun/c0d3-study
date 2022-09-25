@@ -1,0 +1,17 @@
+<div class="display"></div>
+<script>
+    const display = document.querySelector('.display')
+    const appStart = () => {
+        display.innerHTML = `
+        <button class="startButton">Start</button>`
+        const startButton = document.querySelector('.startButton')
+        startButton.onclick = () => {
+            display.innerHTML = `<input type="text">
+            <button class="cancelButton">Cancel</button>
+            `
+            const cancelButton = document.querySelector('.cancelButton')
+            cancelButton.onclick = appStart
+        }
+    }
+    appStart()
+</script>

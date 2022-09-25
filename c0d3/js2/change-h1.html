@@ -1,0 +1,11 @@
+<h1 class="display">Hello</h1>
+<input class="inputElement" type="text">
+<button class="buttonElement">Change</button>
+<script>
+    const display = document.querySelector('.display')
+    const input = document.querySelector('.inputElement')
+    const button = document.querySelector('.buttonElement')
+    button.onclick = () => {
+        display.innerText = input.value
+    }    
+</script>
