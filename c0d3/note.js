@@ -1,14 +1,21 @@
-// Write a function named selectiveZero that takes in an array and a number.
-// This function replaces the value of any elements of an array when the element's value matches the given number with a value of 0.
-// 이 함수는 배열의 엘리먼트 value를 대체한다. 엘리먼트 밸류와 인수로 받은 넘버가 같을때, 밸류를 0으로
+// Write a function named copyLast that copies an array but leaves out a given number of elements at the front.
+// copyLast라는 펑션을 작성해라. 이 펑션은 인수로 주어진 숫자만큼의 엘리먼트를 제외하고 새로운 어레이를 만든다. 
 
 
-const selectiveZero = (arr, num, i = 0) => {
-    if (arr.length <= i) return arr
-    if (arr[i] === num) arr[i] = 0
-    console.log(arr);
-    return selectiveZero(arr, num, i + 1)
+const copyLast = (arr, num, i = 0, result = []) => {
+    if (arr.length <= i) return result
+    if (i >= num) {
+        result.push(arr[i])
+    }
+    return copyLast(arr, num, i + 1, result)
 }
 
-const b = selectiveZero([5, 2, 2, 9], 2) // [5,0,0,9]
+// arr.length와 i가 같아지면 result를 return한다.
+// i가 num보다 작으면, result에 push하지 않고 재귀한다.
+// i가 num보다 작지않다면, result에 push하고 재귀한다.
+// 즉 ...
+
+
+const b = copyLast(['Ironman', 'Thor', 'Captain', 'Black Widow', 'Hulk'], 2)
+// ["Captain", "Black Widow", "Hulk"]
 console.log(b);
