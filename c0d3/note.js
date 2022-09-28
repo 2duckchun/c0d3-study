@@ -1,21 +1,22 @@
-// Write a function named copyLast that copies an array but leaves out a given number of elements at the front.
-// copyLast라는 펑션을 작성해라. 이 펑션은 인수로 주어진 숫자만큼의 엘리먼트를 제외하고 새로운 어레이를 만든다. 
+// Write a function called longest that returns the longest string out of an array of strings.
+// longest라는 함수를 작성해라. 어레이에서 스트링이 가장 긴 어레이의 엘리먼트를 리턴한다.
 
 
-const copyLast = (arr, num, i = 0, result = []) => {
-    if (arr.length <= i) return result
-    if (i >= num) {
-        result.push(arr[i])
-    }
-    return copyLast(arr, num, i + 1, result)
+const longest = (arr) => {
+  return arr.reduce((acc, e) => {
+    if (acc.length < e.length) return e
+    return acc
+  }, arr[0])
 }
 
-// arr.length와 i가 같아지면 result를 return한다.
-// i가 num보다 작으면, result에 push하지 않고 재귀한다.
-// i가 num보다 작지않다면, result에 push하고 재귀한다.
-// 즉 ...
+
+// reduce의 이너 펑션은 acc와 e를 파라미터로 함.
+// acc와 e.length를 비교하며 e가 길다면 e를 리턴함
+// 그 외라면 acc를 리턴함.
 
 
-const b = copyLast(['Ironman', 'Thor', 'Captain', 'Black Widow', 'Hulk'], 2)
-// ["Captain", "Black Widow", "Hulk"]
+
+
+const b = longest(['Thor', 'Loki', 'Ant-Man', 'Rocket']) // returns "Ant-Man"
+
 console.log(b);
