@@ -1,0 +1,38 @@
+<!-- 
+    Click the Add button to add a todo item. It should show up as an h2 element. If you click on a todo item, it should be removed. 
+    Add 버튼을 클릭하면 todo item이 추가된다. 이것은 h2 element에 보여지게 된다. 만약 todo item을 클릭한다면, 그 todo item은 삭제된다.
+-->
+
+<h1>TODO LIST</h1>
+<input class="input" type="text">
+<button class="button">Add</button>
+<div class="display"></div>
+<script>
+    const input = document.querySelector('.input')
+    const button = document.querySelector('.button')
+    const display = document.querySelector('.display')
+    const dataArray = []
+    
+    const render = () => {
+        display.innerHTML = dataArray.reduce((acc, e) => {
+            return acc + `<h2 class="todo">${e}</h2>`
+        }, '')
+        const todolist = document.querySelectorAll('.todo')
+        todolist.forEach((e, i) => {
+            e.onclick = () => {
+                dataArray.splice(i, 1)
+                render()
+            }
+        })
+    }
+
+
+        
+
+
+    button.onclick = () => {
+        dataArray.push(input.value)
+        render()
+    }
+    
+</script>

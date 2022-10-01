@@ -1,0 +1,30 @@
+<!-- Type a string into the input box and click the Add button. The string should show up as an option.
+인풋 박스에 스트링을 입력하고 Add 버튼을 눌러라.
+스트링은 option에 보일 것이다. -->
+
+<h1>Add Option</h1>
+<input type="text" class="input">
+<button class="button">Add</button>
+<div>
+<select class="select"></select>
+</div>
+<script>
+// 먼저 input과 button과 select의 클래스명을 쿼리셀렉터로 따놓는다.
+// 데이터어레이 배열을 미리 하나 선언을 해놓는다. option에 넣어주기 위함이다.
+// 버튼을 클릭한다면 input의 밸류가 데이터어레이 배열에 push된다.
+// 그리고 select 내부의 innerHTML은 데이터어레이가 추가된 것이 reduce되어
+// 표현이 된다.
+
+    const input = document.querySelector('.input')
+    const button = document.querySelector('.button')
+    const select = document.querySelector('.select')
+    const dataArray = []
+
+    button.addEventListener('click', () => {
+        dataArray.push(input.value)
+        select.innerHTML = dataArray.reduce((acc, e) => {
+            return acc + `<option>${e}</option>`
+        }, '')
+    })
+
+</script>

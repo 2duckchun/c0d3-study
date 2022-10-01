@@ -1,0 +1,25 @@
+<!-- 
+    Recall how document.querySelector selects the first element it finds that matches its argument. 
+    document.querySelectorAll is similar, except it returns an array of all the elements that match the query. 
+    떠올려라. 어떻게 document.querySelector가 argument에 매치되는 first element를 고르는지. 
+    document.querySelectorAll도 비슷하다. 다만 이것은 모든 매치되는 엘리먼트를 '배열'로 리턴한다는 것이 다르다.
+-->
+
+<div>
+    <button class="hello">Hello</button>
+    <button class="hello">Hola</button>
+    <button class="hello">안녕하세요</button>
+    <button class="hello">Aloha</button>
+    <h1 class="hello">Hi world</h1>
+</div>
+<script>
+    const hellos = document.querySelectorAll('.hello')
+    console.log(hellos);
+    const buttons = document.querySelectorAll('button')
+// 
+    buttons.forEach((e, i) => {
+        e.onclick = () => {
+            alert(`hello i am in index ${i}`)
+        }
+    })
+</script>

@@ -1,0 +1,30 @@
+<!-- select allows you to build dropdown menus. The choices go inside option elements, which are children of the select element: 
+셀렉트는 드롭다운 버튼을 만들어주는 엘리먼트이다.
+선택지는 option 엘리먼트 내부에 들어온다.
+option은 select의 자식 엘리먼트가 된다.
+-->
+
+<!-- If we have an array of strings that we want to use for the options, 
+    어레이 내부의 스트링을 옵션에 넣고 싶을 때
+
+    we can use reduce to generate string tags and then set the innerHTML 
+    우리는 reduce를 쓸 수 있다. 스트링 태그를 달은 뒤, innerHTML 프로퍼티에 할당한다.
+    property of the select: -->
+
+
+<select>
+    <option value="Mild">Mild</option>
+    <option value="Medium">Medium</option>
+    <option value="Spicy">Spicy</option>
+</select>
+
+<select class="selectContainer"></select>
+<script>
+    const data = ['Charmander', 'Squirtle', 'Caterpie']
+    const select = document.querySelector('.selectContainer')
+    select.innerHTML = data.reduce((acc, e) => {
+        return acc + `<option>${e}</option>`
+    }, "")
+</script>
+<!-- select를 querySelector로 특정하고
+그 내부의 요소를 innerHTML로 채운다 -->

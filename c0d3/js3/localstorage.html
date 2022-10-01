@@ -1,0 +1,64 @@
+<!-- 
+Let's review how all of this works.
+// 리뷰해보자 이 JSON 어떻게 일하는지
+
+JSON is the string that gets returned by JSON.stringify and the argument you pass into JSON.parse.
+// JSON은 stringify되어 스트링이 된 것이고, parse의 아규먼트가 된다.
+
+JSON.stringify( data ) ——> JSON ——> JSON.parse(JSON) ——> data
+// 데이터를 JSON으로 만든다. JSON을 전송했다면 parse해서 data로 만든다.
+ -->
+
+ <!-- 
+    LocalStorage lets you store data, like a database in the browser. There are many ways you can make use of LocalStorage when writing a JavaScript program, and you'll get to try a couple of examples in the next Exercise section. Here are the two key functions you'll need to know:
+    로컬스토리지는 브라우저 속의 데이터베이스처럼 데이터를 저장하게 한다.
+    자바스크립트 프로그래밍을 짜면서 다양한 방ㅂ버으로 로컬스토리지를 구성할 수 있고, 여기에는 2가지 알아야할 연습 섹션이 필요하다.
+    여기에는 당신이 알아야 할 2가지 키 펑션이 있다.
+-->
+
+<!-- 
+    localStorage.setItem is a function that takes in 2 strings.
+    localStorage.setItem은 2개의 스트링을 받는다.
+
+    The first string tells the browser which title to give the data
+    The second string is the data to store
+    첫번째 스트링은 브라우저에게 데이터에 어떤 타이틀을 줄 건지 말해주고
+    두번째 스트링은 저장할 데이터이다.
+ -->
+
+<!-- 
+    localStorage.getItem takes in only a string, the title of the data to retrieve, and returns the data.
+    getItem은 오직 데이터를 되돌려 받기 위한 타이틀인 스트링만 받고,
+    데이터를 리턴한다. 
+ -->
+
+ <!-- 
+    Here's a quick UI that lets the user add text to LocalStorage. Save this as an HTML page, try storing some data, then reloading the page and storing more—you'll notice that unlike what we've used to store data so far, the LocalStorage data is persistent across page reloads. (This script logs to the console, so read this to learn how to open your browser's console.)
+    유저가 LocalStorage에 텍스트를 추가하는 퀵 UI가 있다. 
+    이 HTML 문서를 저장하고, 데이터를 저장하고, 새로고침을 하고, 더 저장을 해봐라.
+    ㅡ 주목해야한다. 뭘 했는지에 상관없이 LocalStroage는 페이지를 리로드를 해도 데이터가 영구히 저장될 것이다.
+    ㅡ 이 스크립트를 로그로 남겨놓고, 유저가 브라우저 콘솔을 열 때 이것을 볼 수 있게 할 수 있다.
+  -->
+
+  <input type="text" class="textBox">
+  <button class="submit">Store it</button>
+
+  <script>
+    const submitButton = document.querySelector('.submit')
+    const textBox = document.querySelector('.textBox')
+// First grab what's already in local storage.
+// 먼저, 로컬스토리지에 뭔가 있는지 잡아라.
+
+// We use || '[]' to start an array the first time
+// 처음에 시작할 때, array의 시작을 || []로 시작해라.
+
+//   because getItem will return null
+// 왜냐하면 getItem이 null을 뱉어내지 않도록.
+    const IsData = localStorage.getItem('mydata') || '[]'
+    const dataArray = JSON.parse(IsData)
+    submitButton.onclick = () => {
+        dataArray.push(textBox.value)
+        localStorage.setItem('mydata', JSON.stringify(dataArray))
+        console.log(dataArray)
+    }
+  </script>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>localStorage</title>
+</head>
+<body>
+    <input type="text" class="input">
+    <button class="button">Store it!!</button>
+    <h1 class="display"></h1>
+    <script>
+        const input = document.querySelector('.input')
+        const button = document.querySelector('.button')
+        const display = document.querySelector('.display')
+
+        const isData = localStorage.getItem('Data') || '[]'
+        const dataArray = JSON.parse(isData)
+        display.innerText = isData
+
+        button.onclick = () => {
+            dataArray.push(input.value)
+            localStorage.setItem('Data', JSON.stringify(dataArray))
+            console.log(dataArray); 
+        }
+    </script>
+</body>
+</html>

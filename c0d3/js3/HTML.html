@@ -1,0 +1,49 @@
+<!-- In JS2 you learned about:
+    JS2에서 너가 배운 것은
+
+The div tag, which we use to group elements on HTML pages
+엘리먼트를 그룹핑할 수 있는 div 태그를 배웠다.
+Element properties: innerHTML and innerText
+엘리먼트 프로퍼티 : innerHTML, innerText..
+
+In the last lesson you learned about setting an element's onclick attribute to assign a function to run when the user clicks on the element.
+라스트 섹션에서 우리는 element를 유저가 클릭했을 때 발동하는 펑션을 할당해주기 위한 onclick 어트리뷰트에 대해 배웠다.
+
+A downside to this method is that you can only assign one function to each element. Best practice is to run the element's addEventListener function:
+이 방법의 단점은 오직 하나의 펑션만을 하나의 요소에 할당해준다는 것이다. 가장 좋은 방법은 엘리멘트의 애드이벤트리스터 함수를 통해 구동시키는 것이다.
+
+addEventListener('eventName', function).
+addEventListener('이벤트이름', 함수)
+
+Let's see how our original example from JS1 would look with an event listener: 
+JS1의 오리지날 예제를 eventlistener로 만들어보자.
+-->
+
+<button class="submit1">Click Me</button>
+<script>
+    const button1 = document.querySelector('.submit1')
+    button1.addEventListener('click', () => {
+        alert("Ouch!!")
+    })
+</script>
+
+<!-- 
+    The first argument, 'click', is a string event that is supported in the browser.
+    첫번째 아규먼트인 클릭은 브라우저가 지원하는 스트링 이벤트이다.
+
+    Other events you can add events for include mouseenter , mouseleave, mousemove, and keyup.
+    다른 이벤트도 있다. (mouseenter, mouseleave, mousemove, keyup)
+    
+    These events will be covered in further details but if you want to find out other events that the browser supports, do a search for Browser DOM Events
+    이 이벤트들은 앞에 더 디테일하게 다워볼 것이다.하지만 미리 알고 싶으면 Browser DOM Events를 검색해보아라.
+
+If you struggled with the HTML section in JS2 ( the previous lesson ), please make sure you review / redo them again before starting this section. 
+만약 JS2의 HTML을 조금 헤멘다면, 돌아가서 리뷰 한번 더 해봐라. 
+
+In the exercise section, try to come up with the steps yourself before coding!
+이번 exercise 섹션에서는 코딩하기전에 스스로 스텝을 생각해볼 것이다.
+
+In this section, you will learn one more element and some very important functions that allow us to work with arrays in the browser.
+이번 섹션에서는 너는 하나 이상의 엘리먼트와 엄청 중요한 펑션에 대해 알아볼 것이다. 우리가 브라우저와 배열과 함께 일할 수 있게끔.
+-->
+
