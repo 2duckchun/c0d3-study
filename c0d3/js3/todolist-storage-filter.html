@@ -1,0 +1,65 @@
+<h1>TODO LIST</h1>
+<input class="inputFilter" type="text">
+<button class="buttonFilter">Filter</button>
+<input class="inputAdd" type="text">
+<button class="buttonAdd">Add</button>
+<div class="display">
+</div>
+<script>
+    // 서버에 저장하는 것은 동일하다.
+
+    const inputFilter = document.querySelector('.inputFilter')
+    const buttonFilter = document.querySelector('.buttonFilter')
+    const inputAdd = document.querySelector('.inputAdd')
+    const buttonAdd = document.querySelector('.buttonAdd')
+    const display = document.querySelector('.display')
+    const storageData = localStorage.getItem('todoData') || '[]'
+    const dataArray = JSON.parse(storageData)
+    
+    // string.includes()  == 포함되는 문자열 : true 반환, 없을시 false 반환
+
+    /*
+    
+    The new function we had to add here was the Filter button's onclick. 
+    우리가 여기에 추가할 펑션은 필터 버튼 온클릭이다.
+    
+    We chose to have this function filter the results, and add a parameter to render so it can render just the filtered items. 
+    우리는 선택했다. 이 펑션이 result를 필터하고, 그리고 파라미터를 추가한다. 렌더에다가. 이것은 렌더할 수 있다. 단지 필터된 아이템을.
+
+    A side effect of doing it this way is that if the user adds or removes an item, the filter goes away. 
+    이것의 사이드 이펙트는 만약 유저가 애드하거나 리무브할때 필터가 사라진다.
+
+    If you wanted to keep the filter when adding and removing, you could create a new variable outside the functions to store the filter text, 
+    만약에 필터가 애딩되거나 리무빙될때 킵되는걸 원한다면, 새로운 함수를 만들어서 filter를 저장해라.
+
+    and then do the actual filtering inside render. 
+    
+    */
+   
+    const render = (arr = dataArray) => {
+        localStorage.setItem('todoData', JSON.stringify(dataArray))
+        display.innerHTML = arr.reduce((acc, e) => {
+            return acc + `<h2 class="todo">${e}</h2>`
+        }, '')
+        const todoList = document.querySelectorAll('.todo')
+        todoList.forEach((e, i) => {
+            return e.onclick = () => {
+                dataArray.splice(i, 1)
+                render()
+            }
+        })
+    }
+
+    buttonFilter.onclick = () => {
+        const filterArray = dataArray.filter((e) => {
+            return e.includes(inputFilter.value)
+        })
+        render(filterArray)
+    }
+
+    buttonAdd.onclick = () => {
+        dataArray.unshift(inputAdd.value)
+        render()
+    }
+
+</script>
