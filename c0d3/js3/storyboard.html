@@ -1,0 +1,61 @@
+<button class="previousButton">Previous</button>
+<button class="nextButton">Next</button>
+<hr>
+<div class="display"></div>
+<hr>
+<textarea class="textarea"></textarea>
+<button class="submitButton">Submit</button>
+<div class="storylist">
+</div>
+<script>
+    const previousButton = document.querySelector('.previousButton')
+    const nextButton = document.querySelector('.nextButton')
+    const display = document.querySelector('.display')
+    const textarea = document.querySelector('.textarea')
+    const submitButton = document.querySelector('.submitButton')
+    const storylist = document.querySelector('.storylist')
+    const storageStoryList = localStorage.getItem('story') || "[]"
+    let idx = 0
+    let dataArray = JSON.parse(storageStoryList)
+
+    if (dataArray.length === 0) {
+        dataArray = ['지영이와 태수는 행복하게 사귀고 있습니다.', '앞으로도 행복할거구요.', '곧 결혼하게 될 것 같습니다.']
+    }
+
+    display.innerText = dataArray[0]
+
+    const render = () => {
+        localStorage.setItem('story', JSON.stringify(dataArray))
+        storylist.innerHTML = dataArray.reduce((acc, e) => {
+            return acc + `<h3 class="storyLine">${e}</h3>`
+        }, '')
+        const storyLineArray = document.querySelectorAll('.storyLine')
+        storyLineArray.forEach((e, i) => {
+            return e.onclick = () => {
+                dataArray.splice(i, 1)
+                render()
+            }
+        })
+    }
+
+    submitButton.onclick = () => {
+        dataArray.push(textarea.value)
+        render()
+    }
+
+    previousButton.onclick = () => {
+        if (0 < idx) {
+            idx = idx - 1
+        }
+        display.innerText = dataArray[idx]
+    }
+
+    nextButton.onclick = () => {
+        if (idx < dataArray.length - 1) {
+            idx = idx + 1
+        }
+        display.innerText = dataArray[idx]
+    }
+    render()
+    
+</script>
