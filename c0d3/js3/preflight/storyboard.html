@@ -22,7 +22,9 @@
         dataArray = ['지영이와 태수는 행복하게 사귀고 있습니다.', '앞으로도 행복할거구요.', '곧 결혼하게 될 것 같습니다.']
     }
 
-    display.innerText = dataArray[0]
+    const renderDisplay = () => {
+        display.innerText = dataArray[idx]
+    }
 
     const render = () => {
         localStorage.setItem('story', JSON.stringify(dataArray))
@@ -47,15 +49,17 @@
         if (0 < idx) {
             idx = idx - 1
         }
-        display.innerText = dataArray[idx]
+        renderDisplay()
     }
 
     nextButton.onclick = () => {
         if (idx < dataArray.length - 1) {
             idx = idx + 1
         }
-        display.innerText = dataArray[idx]
+        renderDisplay()
     }
-    render()
     
+    render()
+    renderDisplay()
+
 </script>
