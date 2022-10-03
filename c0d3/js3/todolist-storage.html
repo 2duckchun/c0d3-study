@@ -1,29 +1,29 @@
-<!-- 
-    Click the Add button to add a todo item. It should show up as an h2 element. If you click on a todo item, it should be removed. 
-    Add 버튼을 클릭하면 todo item이 추가된다. 이것은 h2 element에 보여지게 된다. 만약 todo item을 클릭한다면, 그 todo item은 삭제된다.
--->
-
 <h1>TODO LIST</h1>
-<input class="input" type="text">
-<button class="button">Add</button>
+<input class="inputElement" type="text">
+<button class="buttonElement">Add</button>
 <div class="display"></div>
 <script>
-    const input = document.querySelector('.input')
-    const button = document.querySelector('.button')
+    const input = document.querySelector('.inputElement')
+    const button = document.querySelector('.buttonElement')
     const display = document.querySelector('.display')
-    const isData = localStorage.getItem('myData') || '[]'
-    const dataArray = JSON.parse(isData)
-
+    // ** 로컬스토리지에 저장할 todolist의 키 이름은 todoStorage로 하기로 결정.
+    // 8. 처음 접속했을 때, 로컬스토리지에 todoStorage가 있으면 그것을 불러오고, 값이 없다면(falsey), 빈 어레이를 불러옴
+    const storageArray = localStorage.getItem('todoStorage') || '[]'
+    // 8 - 1. 서버와 데이터를 주고받는 것은 문자열인 상태로 주고받으므로 반드시 문자열화를 생각해야함.
+    const dataArray = JSON.parse(storageArray)
+    // 9. 받아온 storageArray를 parse하여 문자열화를 해제함(JS에서 쓸 수 있게 자료화 함)
 
     const render = () => {
         display.innerHTML = dataArray.reduce((acc, e) => {
-            return acc + `<h2 class="todo">${e}</h2>`
+            return acc + `<h2>${e}</h2>`
         }, '')
-        const todos = document.querySelectorAll('.todo')
-        todos.forEach((e, i) => {
+        const todos = document.querySelectorAll('h2')
+        todos.forEach((e, i)=>{
             return e.onclick = () => {
                 dataArray.splice(i, 1)
-                localStorage.setItem('myData', JSON.stringify(dataArray))
+                // 12. 노드를 클릭해서 삭제를 하는 것은 곧 dataArray에 변경이 생기는 것이므로, 이 경우에도 setItem을 통해
+                // 로컬스토리지에 새 값을 저장하게 함.
+                localStorage.setItem('todoStorage', JSON.stringify(dataArray))
                 render()
             }
         })
@@ -31,46 +31,10 @@
 
     button.onclick = () => {
         dataArray.unshift(input.value)
-        localStorage.setItem('myData', JSON.stringify(dataArray))
+        // 10. 버튼을 클릭했을 경우 input에 입력된 값이 dataArray로 들어갈 수 있게 함.
+        localStorage.setItem('todoStorage', JSON.stringify(dataArray))
+        // 11. 동시에, 수정된 dataArray를 setItem을 통해 로컬스토리지로 보냄.
+        // 11 - 1. 중복된 키값이 있을 경우, 새로운 자료를 업데이트 하는 형식으로 로컬스토리지에 저장하게 됨.
         render()
     }
-
-    /* 
-    **Help**
-    Because you'll be keeping the todo items in an array, and changing that array whenever the user marks an item as complete, you'll have to reload the todo list each time a todo item is clicked. 어레이 속에 투두 아이템을 계속 킵하는 것 때문에, 그리고 유저가 완료한 아이템에 대해 언제든 어레이를 바꾸기 위해, 우리는 todo아이템이 클릭될때마다 리로드해야 한다.
-
-    Removing an item changes the other items' positions in the array, so you'll also have to remake all the other items' onclick functions. Write a function that does both of these things and make sure it's called when adding or removing an item. 
-    아이템의 삭제는 다른 아이템의 배열 포지션을 바꾸므로, 난 모든 다른 아이템의 온클릭 펑션을 리메이크 해야한다.
-    아이템이 추가되거나 삭제될때 이들이 호출되도록 하는 두개의 함수를 작성해보라
-    */
-
-    /* 
-    **Debrief**
-    Examples: Try adding and removing several items from various positions on the example page (first item, last item, middle item). 
-    The other items should reorder themselves.
-    예제 페이지의 다양한 포지션으로 부터의 몇몇개의 아이템을 추가하거나 삭제하는 것을 트라이해라.
-    다른 아이템들은 그들 스스로 재정렬 된다.
-
-    Function shape: As mentioned in the hint, we'll need a function to load all the todo items onto the page.
-    // 힌트에서 맨션했듯이, 페이지에 onto된 모든 todo items들을 로드할 함수가 필요하다.
-    
-    This will run whenever an item is added or removed, and has no parameters or return value.
-    이것은 아이템이 추가되거나 삭제될때 실행될 것이므로 파라미터와 리턴밸류는 없다.
-    
-    The only other function is a quick one to add a new element based on user input.
-    오직 다른 펑션은 퀵한 하나다. 유저 인풋의 새 엘리먼트를 추가하는 것.
-    */
-
-    /*
-    
-    We'll store the todo items in an array and then turn them into h2 elements each time the list is loaded. 
-    Each h2 should have an onclick that makes it go away. How do we do that? 
-    We haven't learned a way to remove the element directly, but if we remove the item from the array and then refresh the list, that will have the same effect. 
-    We could look through the array for the string we're removing, but what if the user had the same item in their todo list twice? 
-    We might remove the wrong one. So we'll include each item's current position in its onclick function. 
-    This will change every time an item is removed, but that's OK because the onclick functions will be rewritten as well.
-
-    */
-
-
 </script>
