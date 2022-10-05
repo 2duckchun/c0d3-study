@@ -1,0 +1,40 @@
+<h1>TODO LIST</h1>
+<input class="inputElement" type="text">
+<button class="buttonElement">Add</button>
+<div class="display"></div>
+<script>
+    const input = document.querySelector('.inputElement')
+    const button = document.querySelector('.buttonElement')
+    const display = document.querySelector('.display')
+    // ** 로컬스토리지에 저장할 todolist의 키 이름은 todoStorage로 하기로 결정.
+    // 8. 처음 접속했을 때, 로컬스토리지에 todoStorage가 있으면 그것을 불러오고, 값이 없다면(falsey), 빈 어레이를 불러옴
+    const storageArray = localStorage.getItem('todoStorage') || '[]'
+    // 8 - 1. 서버와 데이터를 주고받는 것은 문자열인 상태로 주고받으므로 반드시 문자열화를 생각해야함.
+    const dataArray = JSON.parse(storageArray)
+    // 9. 받아온 storageArray를 parse하여 문자열화를 해제함(JS에서 쓸 수 있게 자료화 함)
+
+    const render = () => {
+        display.innerHTML = dataArray.reduce((acc, e) => {
+            return acc + `<h2>${e}</h2>`
+        }, '')
+        const todos = document.querySelectorAll('h2')
+        todos.forEach((e, i)=>{
+            return e.onclick = () => {
+                dataArray.splice(i, 1)
+                // 12. 노드를 클릭해서 삭제를 하는 것은 곧 dataArray에 변경이 생기는 것이므로, 이 경우에도 setItem을 통해
+                // 로컬스토리지에 새 값을 저장하게 함.
+                localStorage.setItem('todoStorage', JSON.stringify(dataArray))
+                render()
+            }
+        })
+    }
+
+    button.onclick = () => {
+        dataArray.unshift(input.value)
+        // 10. 버튼을 클릭했을 경우 input에 입력된 값이 dataArray로 들어갈 수 있게 함.
+        localStorage.setItem('todoStorage', JSON.stringify(dataArray))
+        // 11. 동시에, 수정된 dataArray를 setItem을 통해 로컬스토리지로 보냄.
+        // 11 - 1. 중복된 키값이 있을 경우, 새로운 자료를 업데이트 하는 형식으로 로컬스토리지에 저장하게 됨.
+        render()
+    }
+</script>
