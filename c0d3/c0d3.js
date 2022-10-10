@@ -1,27 +1,41 @@
 const allFuns = {}
 
-const findLongest = (arr, i = 0, result = "") => {
-  if (arr.length <= i) return result
-  if (result.length <= arr[i].length) {
-    result = arr[i]
+Object.prototype.longestString = (obj) => {
+  return Object.values(obj).reduce((acc, e) => {
+    if (acc.length < e.length) return e
+    return acc
   }
-  return findLongest(arr, i + 1, result)
+  , "")
 }
 
-const longestString = (obj) => {
-  const arr = Object.values(obj)
-  return findLongest(arr) // (어레이 내부의 가장 긴 문자열을 return하는 함수)
-}
 
-const keyOfLongestString = (obj) => {
-  const allKeys = Object.keys(obj)
-  return allKeys.reduce((acc, e) => {
+Object.prototype.keyOfLongestString = (obj) => {
+  const keyArray = Object.keys(obj)
+  return keyArray.reduce((acc, e) => {
     if (obj[acc].length < obj[e].length) return e
     return acc
-  }, allKeys[0])
+  }, keyArray[0])
 }
 
+Object.prototype.removeLongestString = (obj) => {
+  const a = keyOfLongestString(obj)
+  delete obj[a]
+  return obj
+}
+
+Object.prototype.commas = (obj) => {
+  const b = Object.values(obj)
+  return b.reduce((acc, e, i) => {
+    let comma = ', '
+    if (i === 0) comma = ''
+    return acc + comma + e
+  }, '')
+}
+
+allFuns.commas = commas
+allFuns.removeLongestString = removeLongestString
 allFuns.keyOfLongestString = keyOfLongestString
-allFuns.findLongest = findLongest
 allFuns.longestString = longestString
+
+console.log(allFuns)
 module.exports = allFuns

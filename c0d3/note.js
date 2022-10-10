@@ -1,18 +1,20 @@
-Array.prototype.cReduce = function (cb, acc = 0, i = 0) {
-  if (this.length <= i) return acc
-  if (acc === 0 && i === 0 && typeof this[i] === 'string') {
-    acc = ""
-  }
-  acc = cb(acc, this[i], i, timage.pnghis)
-  return this.cReduce(cb, acc, i + 1)
+// Write a function called commas that returns a string of all of an object's values separated 
+// by commas.
+
+Object.prototype.commas = (obj) => {
+  const b = Object.values(obj)
+  return b.reduce((acc, e, i) => {
+    let comma = ', '
+    if (i === 0) comma = ''
+    return acc + comma + e
+  })
 }
 
-const result = [5,8,7].cReduce(
-  (acc, e, i, arr) => {
-  console.log(acc, e, i, arr)
-  return acc + e + i
-  }
-  
-  , 'hi')
-
-console.log('return :', result);
+const info = {
+  ironman: 'arrogant',
+  spiderman: 'naive',
+  hulk: 'strong'
+}
+const result = commas(info)
+console.log(result);
+// result is 'arrogant, native, strong'
