@@ -1,40 +1,62 @@
-<<<<<<< HEAD
-// a가 null도 아니고 undefined도 아니면 a
-// 그 외의 경우는 b
+// // Array.prototype.countForEach = function (cb) {
+// //   this.forEachCount = (this.forEachCount || 0) + 1
+// //   return this.forEachCount
+// // }
 
-let firstName = null;
-let lastName = null;
-let nickName = "바이올렛";
+// // const villains = ['Joker', 'Catwoman', 'Penguin', 'Riddler']
+// // console.log(villains.countForEach(() => {}));
+// // console.log(villains.countForEach(() => {}));
+// // console.log(villains.countForEach(() => {}));
+// // console.log(villains);
 
-console.log(firstName ?? nickName ?? "익명의 사용자")
+// // const moreVillains = ['Two-Face', 'Bane']
+// // console.log(moreVillains.countForEach(()=>{}) + villains.countForEach(() => {}));
 
-let a;
-let b;
-let c;
+// Array.prototype.getNext = function() {
+//   this.index = (this.index || 0) + 1
+//   i = (this.index - 1) % this.length
+//   return this[i]
+// }
 
-let d = a ?? b ?? c
-console.log(d);
+// const a = ["Edna", "Optimus", "Minion"]
+// console.log(a.getNext());
+// console.log(a.getNext());
+// console.log(a.getNext());
+// console.log(a.getNext());
+// console.log(a.getNext());
+// console.log(a.getNext());
+//  // returns "Edna"
+// a.getNext() // returns "Optimus"
+// a.getNext() // returns "Minion"
 
-a = ['']
-=======
-// Write a function called commas that returns a string of all of an object's values separated 
-// by commas.
+// a.getNext() // returns "Edna"
+// a.getNext() // returns "Optimus"
+// a.getNext() // returns "Minion"
 
-Object.prototype.commas = (obj) => {
-  const b = Object.values(obj)
-  return b.reduce((acc, e, i) => {
-    let comma = ', '
-    if (i === 0) comma = ''
-    return acc + comma + e
-  })
+// a.getNext() // returns "Edna"
+
+
+
+var 이거 = ["1", "2", "3"];
+// var 저거 = ["4", "5", "6"];
+var 그거 = ["1", "2", "3"]; 
+// var 에휴 = ["1", "2", "3", "4"];
+
+function 같은배열일까 (우에에, 그에에) {
+  for (let i = 0; i < 우에에.length || i < 그에에.length; i++ ) {
+    if(우에에[i] !== 그에에[i]) {
+      return false
+    }
+  }
+  return true
 }
 
-const info = {
-  ironman: 'arrogant',
-  spiderman: 'naive',
-  hulk: 'strong'
-}
-const result = commas(info)
-console.log(result);
-// result is 'arrogant, native, strong'
->>>>>>> 901051feb63ff1f1711104e50cad62ec350e1d57
+console.log(같은배열일까(이거, 그거));
+
+
+
+// console.log(같은배열일까(이거, 저거));
+
+
+
+console.log('안녕');

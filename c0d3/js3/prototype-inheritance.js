@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 /*
 Prototype functions are great for memory efficiency when you plan on constructing many Objects.
 // 프로토타입 펑션은 많은 오브젝트를 만들어낼 때 굉장히 메모리 효율적인 방법이다. 
@@ -24,31 +24,4 @@ Object.prototype.forEach = function (
     fun(entries[i][1], entries[i],[0])
     return this.forEach(fun, i + 1)
 }
-=======
-/* 
-Prototype functions are great
-for memory efficiency when you plan on constructing many Objects.
-*/
 
-// Object.prototype.eat = function (value) {
-//     const num = this.data || 0
-//     if (value < num) {
-//         return
-//     }
-//     this.data = value
-// }
-
-// const a = {name : 'iron'}
-// a.eat(5)
-
-// a.eat(3)
-
-// a.eat(30)
-
-/*
-When you construct a new Object with the new keyword,
-there are a few things that are happening in the background for you. 
-This involves how the this is defined and used.
-*/
-
->>>>>>> 901051feb63ff1f1711104e50cad62ec350e1d57
