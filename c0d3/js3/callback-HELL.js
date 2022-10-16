@@ -1,17 +1,38 @@
 const request = require('request')
 
-const runApp = () => {
-    request('google.com/contacts', { token: google_token }, contact => {
-        request('netflix.com/api/topCatalog', movies => {
-            people.forEach(number => {
-                request('twilio.com/api/sendMessage', {
-                    token: twilio_token,
-                    to: number
+//callback-hell
+request('https://a.com', (aErr, aRes, aData) => {
+    request('https://b.com', (bErr, bRes, bData) => {
+        request('https://c.com', (cErr, cRes, cData) => {
+            request('https://d.com', (dErr, dRes, dData) => {
+                request('https://e.com', (eErr, eRes, eData) => {
+                    calculatedResult(aData, bData, cData, dData, eData)
                 })
             })
         })
     })
-    setTimeout(runApp, 7 * 24 * 60 * 60 * 1000)
+})
+
+//experienced engineer
+const onReceiveResponseA = (aErr, aRes, aData) => {
+    // do thing with aData
+    request('https://b.com', onReceiveResponseB)
 }
 
-runApp()
+const onReceiveResponseB = (bErr, bRes, bData) => {
+    request('https://c.com', onReceiveResponseC)
+}
+
+const onReceiveResponseC = (cErr, cRes, cData) => {
+    request('https://d.com', onReceiveResponseD)
+}
+
+const onReceiveResponseD = (dErr, dRes, dData) => {
+    request('https://e.com', onReceiveResponseE)
+}
+
+const onReceiveResponseE = (eErr, eRes, eData) => {
+    calculatedResult(aData, bData, cData, dData, eData)
+}
+
+request('https://a.com', onReceiveResponseA)
