@@ -1,12 +1,12 @@
 const info = {
-    ironman: "arrogant",
-    spiderman: "naive",
-    hulk: "strong"
+    ironman: 'arrogant',
+    spiderman: 'naive',
+    hulk: 'strong'
 }
 
 module.exports = {
     data: info,
-    getData: (key) => {
+    getData: key => {
         return info[key]
     }
 }

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메모장</title>
+    <style>
+        .memo {
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="memo">
+        <input id="title" type="text">
+        <textarea id="contents" name="" id="" cols="30" rows="10"></textarea>
+        <button type="button" class="addButton">메모 추가</button>
+    </div>
+    <div>
+        <ul class="memoList">
+        </ul>
+    </div>
+
+    <script>
+        const addButton = document.querySelector(".addButton");
+        const memoList = document.querySelector(".memoList");
+
+        // 메모가 있으면 로컬스토리지에서 가져오고 없으면 새로 만들기
+        const memo = JSON.parse(localStorage.getItem('메모')) === null ? [] : JSON.parse(localStorage.getItem('메모'));
+        let memoLength = memo === null ? 0 : memo.length;
+
+        if (memoLength >= 0) {
+            memo.forEach(element => {
+                addMemo(element.title, element.contents);
+            });
+        };
+
+        addButton.addEventListener("click", function() {
+            const titleText = document.querySelector("#title").value;
+            const contentsText = document.querySelector("#contents").value;
+
+            // 로컬스토리지에 추가
+            memo[memoLength++] = {
+                title: titleText,
+                contents: contentsText,
+            };
+            localStorage.setItem('메모', JSON.stringify(memo));
+
+            // 화면에 추가
+            addMemo(titleText, contentsText);
+        });
+
+        function addMemo(titleText, contentsText) {
+            const liEl = document.createElement("li");
+            const strongEl = document.createElement("strong");
+            const pEl = document.createElement("p");
+
+            strongEl.textContent = titleText;
+            pEl.textContent = contentsText;
+
+            liEl.appendChild(strongEl);
+            liEl.appendChild(pEl);
+
+            memoList.appendChild(liEl);
+        };
+    </script>
+</body>
+</html>
+
+

@@ -1,0 +1,20 @@
+<h1 class="display"></h1>
+<script>
+    const display = document.querySelector('.display')
+    fetch('https://www.c0d3.com/api/lessons').then((res) => {
+        return res.json()
+    }).then((data) => {
+        display.innerText = `There are ${data.length} lessons.`
+    })
+
+    /*
+    Notice how we create two promises here: one to get the data using json() and another to display it. 
+    2가지 프로미스를 사용했다. (첫번째는 json()으로 데이터를 따온 것이고, 두번째는 그것을 디스플레이 해주는 것이다.)
+
+    json() is different from JSON.parse(); 
+    json()은 JSON.parse()와는 다르다.
+    
+    instead of a helper function to be used on any text, it's a function of the fetch library, and runs asynchronously, which is why it needs its own promise.
+    아무 텍스트에나 사용하는 헬퍼펑션과는 달리, 이것은 fetch의 라이브러리이고, 비동기적으로 동작되며, 스스로의 프로미스를 갖는다.
+    */
+</script>
