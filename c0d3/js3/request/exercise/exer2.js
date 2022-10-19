@@ -2,34 +2,30 @@ const request = require('request')
 const fs = require('fs')
 
 /*
+Send a request to https://pokeapi.co/api/v2/pokemon/ and then send a request to get information for each Pokemon to get its image (sprites.front_default). 
+api에 리퀘스트를 보내라 , 그리고 인포메이션에 리퀘스트를 보내고(각 포켓몬) 그들의 이미지를 받아와라.
 
-Send a request to https://pokeapi.co/api/v2/pokemon/ and console.log the Pokemon 
-that weighs the most out of the first 20 Pokemon (if you don't give it a limit, the Pokemon API will default to 20 Pokemon). 
-포켓몬 api에 요청을 보내고, 포켓몬의 몸무게를 찍어라. 
-
-Look at the response—you will notice that each Pokemon has a URL. 
-You need to send another request for each Pokemon to get its weight.
-
+Create an HTML page with 100 Pokemons' names and images.
+100개 포켓몬의 이미지를 만들어보아라.
 */
-request('https://pokeapi.co/api/v2/pokemon?limit=100', (err, res, body) => {
-  const parsedJson = JSON.parse(body)
-  const pokemonList = []
-  parsedJson.results.forEach(thisPokemon => {
-    const pokemonName = thisPokemon.name
-    request(thisPokemon.url, (err, pokeRes, pokeBody) => {
-      const data = JSON.parse(pokeBody)
-      pokemonList.push({
-        name: pokemonName,
-        pic: data.sprites.front_default
+
+request('https://pokeapi.co/api/v2/pokemon?limit=100', (err, res, data) => {
+    const parseData = JSON.parse(data).results
+    const pokeList = []
+    parseData.forEach((data) => {
+      const pokeName = data.name
+      request(data.url, (err, res, data) => {
+        const pokebody = JSON.parse(data).sprites.front_default
+        pokeList.push({name: pokeName, img: pokebody})
+        if (pokeList.length === parseData.length) {
+          const htmlStr = pokeList.reduce((acc, e, i) => {
+            acc = acc + `<div><p>${e.name}</p><img src="${e.img}"></div>`
+            return acc
+          }, '')
+          fs.writeFile('./pokemon.html', htmlStr, () => {
+            console.log('다만들었다')
+          })
+        }
       })
-      if (pokemonList.length === parsedJson.results.length) {
-        const htmlStr = pokemonList.reduce((acc, f) => {
-          return `${acc}<div><p>${f.name}</p><img src="${f.pic}"/></div>`
-        }, '')
-        fs.writeFile('namesandimages.html', htmlStr, () => {
-          ;``
-        })
-      }
     })
-  })
 })

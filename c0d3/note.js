@@ -16,7 +16,6 @@ request('https://pokeapi.co/api/v2/pokemon/', (err, res, data) => {
             const parsedPokemon = JSON.parse(data)
             const weight = parsedPokemon.weight
             pokemonList.push({name: name, weight: weight})
-
         })
     })
 })
