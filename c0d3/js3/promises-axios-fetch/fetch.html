@@ -1,0 +1,37 @@
+<h1 class="display"></h1>
+<script>
+/* 
+The browser provides you with a function called fetch that allows you to send requests and returns a promise. 
+브라우저는 fetch라는 함수를 제공한다. (fetch는 리퀘스트를 보내고, 프로미스를 리턴한다.)
+
+Unlike axios, you must do an extra step of parsing the JSON response into an object.
+axios와는 다르게, JSON response를 파싱해야하는 엑스트라스텝을 해야한다.
+*/
+
+/*
+
+Here's an example of how fetch might be used in a web environment. 
+We are sending a request to [c0d3.com](http://c0d3.com) 
+and displaying how many lessons there are.
+fetch기능이 어떻게 웹 환경에서 쓰이는 지 보여주는 예시이다.
+우리는 request를 cod3 api에 보낼 것이고
+얼마나 많은 레슨이 거기 있는지 보여줄 것이다.
+*/
+
+    const display = document.querySelector('.display')
+    fetch('https://www.c0d3.com/api/lessons').then((res) => {
+        return res.json()
+    }).then((data) => {
+        display.innerText = `there are ${data.length} lessons`
+    })
+
+    /*
+    여기에서 2개의 프로미스를 쓴 것을 주목해라. 하나는 json()을 썼고,
+    하나는 자료를 보여주는 역할을 했다.
+    json()은 JSON.parse()와는 다르다.
+    JSON.parse()는 그냥 모든 문자열이면 가능하다면
+    json()은 fetch의 라이브러리인 async로 동작하는 녀석이다.
+    */
+
+
+</script>
