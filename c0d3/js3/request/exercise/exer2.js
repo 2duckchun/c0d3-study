@@ -29,3 +29,25 @@ request('https://pokeapi.co/api/v2/pokemon?limit=100', (err, res, data) => {
       })
     })
 })
+
+request('https://pokeapi.co/api/v2/pokemon/', (err, res, data) => {
+      const parsePokemonData = JSON.parse(data).results
+      const pokeArray = []
+        parsePokemonData.reduce((acc, pokemon) => {
+          request(pokemon.url, (err, res, data) => {
+              const parseWeight = JSON.parse(data).weight
+              pokeArray.push({name: pokemon.name, weight: parseWeight})
+                if (parsePokemonData.length === pokeArray.length) {
+                    const bigpokemon = pokeArray.reduce((acc, e) => {
+                        if (acc.weight < e.weight) {
+                          return e
+                        }
+                        return acc
+                    }, pokeArray[0])
+                console.log(`Heaviest Pokemon is ${bigpokemon.name} at ${bigpokemon.weight} pounds`);
+              }
+            })
+          },
+        {}
+      )
+    })
