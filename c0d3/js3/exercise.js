@@ -15,3 +15,20 @@ const addKV = (obj, key, value) => {
 } 
 
 addKV(objec, 'super', 'sonic')
+
+const filterNonKeys = (arr, obj) => {
+    return arr.filter((e) => {
+            return obj[e]
+           })
+}
+
+const info = {
+    ironman: 'arrogant',
+    spiderman: 'naive',
+    hulk: 'strong'
+  }
+  const avengers = ['ironman', 'strange', 'thor', 'spiderman', 'hulk']
+  const result = filterNonKeys(avengers, info)
+  // result is ["ironman", "spiderman", "hulk"]
+  console.log(result);
+
