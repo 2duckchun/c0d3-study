@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mouse position</title>
+</head>
+<body>
+    <h1>hello world</h1>
+    <script>
+        const h1 = document.querySelector('h1')
+        h1.addEventListener('mouseout', () => {
+            h1.innerHTML = `HELLO WORLD`
+        })
+        h1.addEventListener('mousemove', (e) => {
+            h1.innerHTML = `X: ${e.clientX}, Y: ${e.clientY}`
+        })
+
+        // h1.onmouseleave = (e) => {
+        //     h1.innerHTML = `HELLO WORLD`
+        // }
+        // h1.onmousemove = (e) => {
+        //     h1.innerHTML = `x: ${e.clientX}, y: ${e.clientY}`
+        // }
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>typewriter</title>
+</head>
+<body>
+    <h1 class="coordinate"></h1>
+    <input type="text">
+    <div class="typedisplay"></div>
+    <div class="display"></div>
+    <script>
+        const html = document.querySelector('html')
+        const coordinate = document.querySelector('.coordinate')
+        const input = document.querySelector('input')
+        const typedisplay = document.querySelector('.typedisplay')
+        const display = document.querySelector('.display')
+        const typingArray = []
+        html.addEventListener('mousemove', (e) => {
+            coordinate.textContent = `X: ${e.clientX}, Y: ${e.clientY}`
+        })
+
+        input.addEventListener('keyup', (e) => {
+            if (e.code === 'Enter') {
+                typingArray.unshift(input.value)
+                input.value = ''
+                render()
+            }
+            typedisplay.innerHTML = `<p>${input.value}</p>`
+        })
+        
+        const render = () => {
+            display.innerHTML = typingArray.reduce((acc, e) => {
+                acc = acc + `<h1>${e}</h1>`
+                return acc
+            }, '')
+            
+        }
+
+    </script>
+</body>
+</html>
