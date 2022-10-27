@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>text-Hiding</title>
+</head>
+<body>
+    <input class="type" type="text">
+    <div class="typeDisplay"></div>
+    <div class="display"></div>
+</body>
+<script>
+
+    /*
+    1. 친만큼 아래에 X가 나올지-?
+    2. 엔터를 치면 밑에 어떻게 나올지-?
+    */
+
+    function getXstr(str_length) {
+        let result = ''
+        for (let i = 0; i < str_length; i++) {
+            result += 'X'
+        }
+        return result
+    }
+
+    function render() {
+        const renderText = msgArr.reduce((acc, e) => {
+            acc = acc + `<h1 class="mouseon">${e.fakeText}</h1>`
+            return acc
+        }, '')
+        display.innerHTML = renderText
+        const onNodeList = document.querySelectorAll('.mouseon')
+            onNodeList.forEach((e, i) => {
+                e.addEventListener('mouseenter', () => {
+                    e.innerText = msgArr[i].realText
+                })
+                e.addEventListener('mouseleave', () => {
+                    e.innerText = msgArr[i].fakeText
+                })
+            })
+    }
+
+    const msgArr = []
+    const input = document.querySelector('.type')
+    const typeDisplay = document.querySelector('.typeDisplay')
+    const display = document.querySelector('.display')
+
+    input.addEventListener('keyup', (e) => {
+        const strValue = input.value
+        if (e.key === "Enter") {
+            msgArr.unshift({
+                realText: strValue,
+                fakeText: Math.random()
+            })
+            input.value = ''
+            render()
+        }
+        typeDisplay.textContent = getXstr(strValue.length)
+    })
+
+    input.focus()
+</script>
+</html>

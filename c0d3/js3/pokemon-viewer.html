@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon Viewer</title>
+</head>
+<body>
+
+  <button class="leftButton">Previous</button>
+  <button class="rightButton">Next</button>
+  <div class="display"></div>
+
+  <script>
+    const leftButton = document.querySelector('.leftButton')
+    const rightButton = document.querySelector('.rightButton')
+    const display = document.querySelector('.display')
+
+    let previous = null
+    let next = null
+
+    const pokeArray = []
+
+    leftButton.addEventListener('click', (e) => {
+      fetchStart(previous)
+    })
+
+    rightButton.addEventListener('click', (e) => {
+      fetchStart(next)
+    })
+
+    const fetchStart = (url) => fetch(url)
+        .then((data) => {
+          return data.json()})
+        .then((data) => {
+          const pokeName = data.results
+          pokeArray.length = 0
+
+          //page change
+          data.previous ? previous = data.previous : previous = null
+          data.next ? next = data.next : next = null
+          
+          pokeName.forEach(poke => {pokeArray.push({name : poke.name})})
+          return pokeName
+        }).then((resultData) => {
+          const urlArray = resultData.map(data => {
+            return fetch(data.url)
+                  .then((data) => data.json())
+                  .then((data) => {return data.sprites.front_default})})
+          return Promise.all(urlArray)
+        }).then((result) => {
+          result.forEach((png, i) => {pokeArray[i].pic = png})
+          const inHTML = pokeArray.reduce((acc, data) => {
+            acc = acc + `<h1>${data.name}</h1><img src="${data.pic}">`
+            return acc}, 
+          '')
+          display.innerHTML = inHTML
+        })
+
+        // async await  ... 감사합니다...!
+
+    fetchStart("https://pokeapi.co/api/v2/pokemon/")
+
+  </script>
+</body>
+</html>
