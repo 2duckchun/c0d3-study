@@ -1,0 +1,45 @@
+<input class="file" type="text">
+<h1 class="display">Input and MP3 URL and hit Enter</h1>
+<audio class="audio"></audio>
+<script>
+    const audioElement = document.querySelector('.audio')
+    const displayElement = document.querySelector('.display')
+    const urlInput = document.querySelector('.file')
+    urlInput.focus()
+
+    audioElement.addEventListener('timeupdate', () => {
+        let seconds = Math.floor(audioElement.currentTime)
+        const min = Math.floor(seconds / 60)
+        seconds = seconds % 60
+        seconds = `${seconds}`
+        if (seconds.length < 2) {
+            seconds = `0${seconds}`
+        }
+        displayElement.innerText = `${min}:${seconds}`
+    })
+
+    let isStarted = false
+    urlInput.addEventListener('keyup', (e) => {
+        if (e.key === 'Enter') {
+            audioElement.src = urlInput.value
+            audioElement.play()
+            displayElement.innerText = '00:00'
+            isStarted = true
+        }
+    })
+
+    displayElement.addEventListener('mouseenter', () => {
+        if (!isStared) {
+            return
+        }
+        audioElement.play()
+    })
+
+    displayElement.addEventListener('mouseleave', () => {
+        if (!isStarted) {
+            return
+        }
+        audioElement.pause()
+    })
+
+</script>

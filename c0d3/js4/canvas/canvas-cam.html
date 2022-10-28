@@ -16,12 +16,11 @@
   }
 
   navigator.mediaDevices.getUserMedia({
-    video: true, // webcam
-    audio: true, // microphone
+    video: true,
+    audio: false
   }).then((stream) => {
     videoElement.srcObject = stream
     videoElement.play()
     delayPicture()
   })
-  
 </script>
