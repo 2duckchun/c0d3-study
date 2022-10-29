@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Person</title>
+</head>
+<body>
+    <button class="addNew">Add Person</button>
+    <div class="container"></div>
+    <hr>
+    <h3>Registered</h3>
+    <div class="rContainer"></div>
+    <script>
+        const addButton = document.querySelector('.addNew')
+        const container = document.querySelector('.container')
+        const rContainer = document.querySelector('.rContainer')
+        const guestList = []
+
+        const addToList = (newGuest) => {
+            guestList.push(newGuest)
+            rContainer.innerText = guestList.reduce((acc, e, i) => {
+                let prefix = ', '
+                if (i === 0) {
+                    prefix = ''
+                }
+                return acc + `${prefix}${e}`
+            })
+        }
+
+        addButton.addEventListener('click', () => {
+            const element = document.createElement('div')
+            element.innerHTML = `
+            First Name: <input type="text" class="fname">
+            Last Name: <input type="text" class="lname">
+            <button class="register">Register</button>
+            `
+
+            const fName = element.querySelector('.fname')
+            const lName = element.querySelector('.lname')
+            const registerButton = element.querySelector('.register')
+
+            registerButton.addEventListener('click', () => {
+                addToList(`${fName.value} ${lName.value}`)
+                element.remove()
+            })
+            container.append(element)
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<section>
+    <h1>Lorem ipsum, dolor sit amet consectetur adipisicing elit!</h1>
+    <ul id="lists">		
+        <li>HTML</li>
+      <li>CSS</li>
+  <li>JavaScript</li>
+    </ul>
+</section>
+
+<script>
+const lists = document.querySelector("#lists");
+console.log(lists.childNodes); // NodeList(7) [text, li, text, li, text, li, text]
+console.log(lists.children); // HTMLCollection(3) [li, li, li]
+</script>

@@ -36,7 +36,7 @@
     })
 
     displayElement.addEventListener('mouseleave', () => {
-        if (!isStarted) {
+        if (isStarted) {
             return
         }
         audioElement.pause()
