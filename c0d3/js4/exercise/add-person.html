@@ -1,52 +1,45 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Person</title>
+    <title>Add-person</title>
 </head>
 <body>
-    <button class="addNew">Add Person</button>
-    <div class="container"></div>
+    <button class="addButton">Add Person</button>
+    <div class="inputDisplay"></div>
     <hr>
     <h3>Registered</h3>
-    <div class="rContainer"></div>
+    <div class="registerDisplay"></div>
     <script>
-        const addButton = document.querySelector('.addNew')
-        const container = document.querySelector('.container')
-        const rContainer = document.querySelector('.rContainer')
-        const guestList = []
-
-        const addToList = (newGuest) => {
-            guestList.push(newGuest)
-            rContainer.innerText = guestList.reduce((acc, e, i) => {
-                let prefix = ', '
-                if (i === 0) {
-                    prefix = ''
-                }
-                return acc + `${prefix}${e}`
-            })
-        }
+        const addButton = document.querySelector('.addButton')
+        const inputDisplay = document.querySelector('.inputDisplay')
+        const registDisplay = document.querySelector('.registerDisplay')
+        
 
         addButton.addEventListener('click', () => {
             const element = document.createElement('div')
             element.innerHTML = `
-            First Name: <input type="text" class="fname">
-            Last Name: <input type="text" class="lname">
-            <button class="register">Register</button>
+            <label for="fnameID">First Name: </label>
+            <input id="fnameID" class="fname" type="text">
+            <label for="lnameID">Last Name: </label>
+            <input id="lnameID" class="lname" type="text">
+            <button class="registButton">Regist</button>
             `
-
-            const fName = element.querySelector('.fname')
-            const lName = element.querySelector('.lname')
-            const registerButton = element.querySelector('.register')
-
-            registerButton.addEventListener('click', () => {
-                addToList(`${fName.value} ${lName.value}`)
+            const fname = element.querySelector('.fname')
+            const lname = element.querySelector('.lname')
+            const registButton = element.querySelector('.registButton')
+            registButton.addEventListener('click', () => {
+                const registNode = document.createElement('p')
+                registNode.textContent = `${fname.value} ${lname.value}`
+                registDisplay.appendChild(registNode)
                 element.remove()
             })
-            container.append(element)
+            inputDisplay.appendChild(element)
         })
+        // 느낀 점 - 브라우저에 렌더링되기전에 addEventListener를 쓰면 좀 요상해질 수 있음...!
+
 
     </script>
 </body>

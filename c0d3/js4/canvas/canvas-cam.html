@@ -1,26 +1,38 @@
-<video class="video"></video>
-<canvas class="canvas"></canvas>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>video canvas</title>
+</head>
+<body>
+  <video class="video"></video>
+  <canvas class="canvas"></canvas>
+  <script>
+    const canvas = document.querySelector('.canvas')
+    const context = canvas.getContext('2d')
+    const videoElement = document.querySelector('.video')
 
-<script>
-  const canvas = document.querySelector('.canvas')
-  const context = canvas.getContext('2d')
-  const videoElement = document.querySelector('.video')
+    const delayPicture = () => {
+      setTimeout(() => {
+        canvas.width = videoElement.videoWidth
+        canvas.height = videoElement.videoHeight
+        context.drawImage(videoElement, 0, 0)
+        delayPicture()
+      }, 5000)
+    }
 
-  const delayPicture = () => {
-    setTimeout(() => {
-      canvas.width = videoElement.videoWidth
-      canvas.height = videoElement.videoHeight
-      context.drawImage(videoElement, 0, 0)
+    navigator.mediaDevices.getUserMedia({
+      video: true,
+      audio: false,
+    }).then((stream) => {
+      videoElement.srcObject = stream
+      videoElement.play()
       delayPicture()
-    }, 5000)
-  }
+    })
 
-  navigator.mediaDevices.getUserMedia({
-    video: true,
-    audio: false
-  }).then((stream) => {
-    videoElement.srcObject = stream
-    videoElement.play()
-    delayPicture()
-  })
-</script>
+  </script>
+  
+</body>
+</html>

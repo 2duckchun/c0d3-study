@@ -1,25 +1,24 @@
-<video class="video"></video>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video</title>
+</head>
+<body>
+    <video class="video"></video>
+    <script>
+      navigator.mediaDevices.getUserMedia({
+        video: true,
+        audio: false,
+      }).then((stream) => {
+        videoElement.srcObject = stream
+        videoElement.play()
+      })
+      
+      const videoElement = document.querySelector('.video')
 
-<script>
-  const videoElement = document.querySelector('.video')
-
-  navigator.mediaDevices.getUserMedia({
-    video: true, // webcam
-    audio: true, // microphone
-  }).then((stream) => {
-    videoElement.srcObject = stream
-    videoElement.play()
-  })
-  
-  /* 
-  1. Use navigator.mediaDevices.getUserMedia to get system devices. Notice how this function returns a promise!
-  시스템 디바이스를 잡기위해 navigator.mediaDevices.getUserMedia를 사용한다. getUserMedia는 프로미스를 반환한다.
-
-  2. After getting the video stream from the webcam, set the srcObject attribute of the video element to the video stream. 
-  웹캠에서 비디오 스트림을 가져온 후 비디오 요소의 srcObject 속성을 비디오 스트림으로 설정한다.
-  Note we are not using the src attribute because it is used for URLs.
-  arc 어트리뷰트는 url에 사용되므로, 여기에서는 사용하지 않습니다.
-
-
-  */
-</script>
+    </script>
+</body>
+</html>
