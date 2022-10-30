@@ -1,49 +1,12 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Document</title>
 </head>
 <body>
-    <audio src="https://songz.c0d3.com/js4/examples/0415.mp3" class="aud" controls></audio>
-    <button class="change-music"> Music Change!</button>
-    <div class="display"></div>
-</body>
-<script>
-    const audio = document.querySelector('.aud')
-    const button = document.querySelector('.change-music')
-    const display = document.querySelector('.display')
-    const video = document.createElement('video')
     
-    video.src = "https://songz.c0d3.com/js4/examples/ankurBunny.mp4"
-    video.controls = "true"
-    display.appendChild(video)
-
-    button.addEventListener('click', () => {
-        audio.src = 'https://songz.c0d3.com/js4/examples/0347.mp3'
-        audio.play()
-    })
-
-
-    /*
-        audio 태그를 이용해 브라우저에 음악 등 사운드를 플레이할 수 있다.
-        src 어트리뷰트는 어디에 오디오 파일이 있는지 브라우저에 말해준다.
-        controls 어트리뷰트는 오디오 컨트롤을 디스플레이하라고 브라우저에 말해준다.
-
-        The audio tag has a separate closing tag because it's possible to give it children elements, such as multiple sources or backup content in case the browser doesn't support it. 
-        오디오태그는 별도의 닫기태그가 있다. 
-        (브라우저가 지원하지 않는 백업컨텐츠를 제공해야 하기 때문)
-
-        We won't be adding any of these in this lesson.
-        이 레슨에서는 그것을 달지는 않을 것이다.
-
-        Audio elements have helper functions such as play() and pause(). 
-        You can also set the src attribute using JavaScript.
-        오디어 엘리먼트는 헬퍼 펑션이 있다. play() 와 pause()라는
-        또한 src 어트리뷰트를 통해 자바스크립트로 컨트롤이 가능하다.
-
-    */
-</script>
+</body>
 </html>
