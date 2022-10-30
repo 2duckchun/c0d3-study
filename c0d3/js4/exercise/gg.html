@@ -1,14 +1,15 @@
-<section>
-    <h1>Lorem ipsum, dolor sit amet consectetur adipisicing elit!</h1>
-    <ul id="lists">		
-        <li>HTML</li>
-      <li>CSS</li>
-  <li>JavaScript</li>
-    </ul>
-</section>
-
+<ul class="mother">
+   <li>슬기님</li>
+   <li>파이팅</li>
+   <li>같이 고민해봅시다</li>
+</ul>
 <script>
-const lists = document.querySelector("#lists");
-console.log(lists.childNodes); // NodeList(7) [text, li, text, li, text, li, text]
-console.log(lists.children); // HTMLCollection(3) [li, li, li]
+  const ul = document.querySelector('.mother')
+
+  const eventhandler = () => {
+    console.log('이것이 이벤트 위임')
+  }
+  ul.addEventListener('click', eventhandler)
+  // ul의 자식 요소인 li들을 클릭하면 '이것이 이벤트 위임' 이라는 말이 나옵니다.
+
 </script>
