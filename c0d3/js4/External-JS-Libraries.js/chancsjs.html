@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chance JS</title>
+</head>
+<body>
+    <!-- chance JS helps you generate random data!
+    in the example below, we generate a random bio for a random person.
+    Refresh the page to generate a new bio!
+    -->
+
+    <h1 class="name"></h1>
+    <p class="story"></p>
+    <script src="https://chancejs.com/chance.min.js"></script>
+    <script>
+        const randomName = `${chance.first()} ${chance.last()}`
+        document.querySelector('.name').innerText = `The story of ${randomName}`
+
+        const types = ['child', 'teen', 'adult', 'senior']
+        const randomTypeIndex = Math.floor(Math.random() * types.length)
+        const randomType = types[randomTypeIndex]
+        const randomAddress = chance.address()
+
+        document.querySelector('.story').innerText = `
+        ${randomName} is a ${chance.age({type: randomType})} year old ${chance.gender()} ${randomType}
+        who lives at ${randomAddress} in ${chance.country({full: true})}
+        `
+
+    </script>
+
+</body>
+</html>
