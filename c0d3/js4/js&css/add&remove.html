@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>toggle</title>
+    <style>
+        .circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: aqua;
+        }
+
+        .active {
+            background-color: tomato
+        }
+    </style>
+</head>
+<body>
+    <div class="circle active"></div>
+    <script>
+        const circle = document.querySelector('.circle')
+        circle.addEventListener('click', () => {
+            if(circle.classList.contains('active')) {
+                circle.classList.remove('active')
+            } else {
+                circle.classList.add('active')
+            }
+        })
+</script>
+</body>
+</html>
