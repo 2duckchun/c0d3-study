@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TodoList CSS</title>
+    <style>
+        .container {
+            text-align: center;
+            margin: auto;
+            width: 450px;
+            border: 1px solid blue;
+        }
+        h1 {
+            text-align: left;
+            padding-left: 1rem;
+        }
+        input {
+            width: 90%;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0px;
+            margin: 0px;
+        }
+        li {
+            box-sizing: border-box;
+            width: 100%;
+            margin:10px 0px 0px 0px;
+            display: flex;
+            padding:15px 15px 15px 15px;
+            justify-content:space-between;
+            background: gray;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>TODO LIST EXAMPLE</h1>
+            <input>
+        </header>
+        <main>
+            <ul>
+                <li>JS0<div><button>Edit</button><button>Delete</button></div></li>
+                <li>JS1<div><button>Edit</button><button>Delete</button></div></li>
+                <li>JS2<div><button>Edit</button><button>Delete</button></div></li>
+                <li>JS3<div><button>Edit</button><button>Delete</button></div></li>
+                <li>JS4<div><button>Edit</button><button>Delete</button></div></li>
+                <li>JS5<div><button>Edit</button><button>Delete</button></div></li>
+                <li>JS6<div><button>Edit</button><button>Delete</button></div></li>
+            </ul>
+        </main>
+    </div>
+</body>
+</html>

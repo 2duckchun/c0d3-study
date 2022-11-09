@@ -1,0 +1,33 @@
+<!-- 
+    박스모델 때문에, 엘리먼트의 width값이 다소 헷갈릴 수 있다.
+    별도의 지정 없이 element에 width를 줬을 때,
+    그 셋팅은 content를 기준으로 하게 된다.
+ -->
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>width</title>
+    <style>
+        .box {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            color: white;
+            background: rgba(100, 0, 0, 1);
+            margin: 10px;
+            padding: 10px;
+            border: 2px solid rgba(255, 0, 255, 1)
+        }
+    </style>
+</head>
+<body>
+    <h1 class="box">A</h1>
+    <h1 class="box">B</h1>
+    <h1 class="box">C</h1>
+    <!-- width는 50px(컨텐츠 넓이) + 10px + 10px(패딩값 2개) + border 2 + 2px (보더값...) -->
+</body>
+</html>

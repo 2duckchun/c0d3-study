@@ -1,0 +1,73 @@
+<!-- 
+기본적으로, 모든 엘리먼트들은 스크린에 렌더될 때, 부모의 왼쪽 상단 코너에서 렌더되고,
+오른쪽과 아래방향으로 퍼진다.
+우리는 position이라는 프로퍼티를 쓸 수 있고, position은 top, left, right, bottom으로 되어있다.
+엘리먼트의 정확한 위치와 레이아웃을 맞추기 위해 필요하다.
+-->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>position</title>
+    <style>
+        .div1 {
+            background: rgba(255, 0, 0, 1);
+        }
+        .div2 {
+            background: rgba(0, 255, 0, 1);
+        }
+        .div3 {
+            background: rgba(0, 0, 255, 1);
+        }
+        .div4 {
+            background: rgba(255, 0, 255, 1);
+        }
+        div {
+            height: 100px;
+        }
+        select {
+            margin-bottom: 2rem;
+            z-index: 2;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <select id = "switcher">
+        <option value="static">static</option>
+        <option value="absolute">absolute</option>
+        <option value="relative">relative</option>
+    </select>
+    <div class="div1"></div>
+    <div class="div2"></div>
+    <div class="div3"></div>
+    <div class="div4"></div>
+    <script>
+        const $switcher = document.querySelector('#switcher')
+        const $thirdBox = document.querySelector('.div3')
+        $switcher.addEventListener('change', (event) => {
+            console.log(event);
+            console.log(event.target);
+            console.log($thirdBox);
+            $thirdBox.style.position = event.target.value
+            switch (event.target.value) {
+                case "absolute": {
+                    $thirdBox.style.top = "40px";
+                    $thirdBox.style.left = "40px";
+                    $thirdBox.style.width = "100%";
+                }
+                case "relative": {
+                    $thirdBox.style.top = "-20px";
+                    $thirdBox.style.left = "20px";
+                }
+                default: {
+                    $thirdBox.style.width = "100%"
+                }
+            }
+        })
+    </script>
+</body>
+</html>
+

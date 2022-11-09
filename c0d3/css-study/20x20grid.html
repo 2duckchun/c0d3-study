@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>grid</title>
+    <style>
+        .container {
+            width: 400px;
+            line-height: 0px;
+        }
+        .block {
+            display: inline-block;
+            border: 1px solid gray;
+            color: rgba(200, 200, 200, 1);
+            width: 20px;
+            height: 20px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    </div>
+    <script>
+        const container = document.querySelector('.container')
+        // runs input function 20 times
+        const upTo400 = (fn, i=0 ) => {
+            if (i === 400) return
+            fn(i)
+            return upTo400(fn, i + 1)
+        }
+
+        let result = ''
+
+        upTo400(() => {
+            result = result + `<div class="block"></div>`
+        })
+        container.innerHTML = result
+    </script>
+</body>
+</html>

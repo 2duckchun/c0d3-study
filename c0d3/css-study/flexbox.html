@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html</title>
+    <style>
+        header {
+            color: white;
+        }
+        .header1 {
+            background: rgba(255, 0, 0, 1);
+        }
+        .header2 {
+            background: rgba(0, 0, 255, 1);
+        }
+        .header3 {
+            background: rgba(0, 155, 0, 1);
+        }
+        .box {
+            display: flex;
+        }
+        .what {
+            color:tomato;
+        }
+        #iden {
+            color: teal 
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1 class="header header1">group1</h1>
+        <h1 class="header header2">group2</h1>
+        <h1 class="header header3">group3</h1>
+        <h1 class="what" id="iden">나의 색깔은?</h1>
+    </div>
+    <select id="switcher">
+        <option value="initial">initial</option>
+        <option value="space-evenly">space-evenly</option>
+        <option value="space-between">space-between</option>
+        <option value="space-around">space-around</option>
+        <option value="center">center</option>
+    </select>
+    <button class="button">ㅎㅇ</button>
+    <script>
+        const switcher = document.querySelector('#switcher')
+        const box = document.querySelector('.box')
+        const botton = document.querySelector('.button')
+        const h1 = document.querySelector('.what')
+        switcher.addEventListener('change', (event) => {
+            console.log(event);
+            console.log(box.style);
+            /* select의 이벤트가 일어날 시
+            target의 value가 인라인 style 조작의 justifyContent 프로퍼티에 강제 할당 됩니다.
+            */
+            // style 프로퍼티가 getter와 setter 모두 존재해서 가능하다고 합니다.  
+            box.style.justifyContent = event.target.value;
+        })
+
+        botton.addEventListener('click', () => {
+            h1.style.color = 'black'
+        })
+
+    </script>
+</body>
+</html>
