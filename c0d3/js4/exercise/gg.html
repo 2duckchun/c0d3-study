@@ -1,15 +1,13 @@
-<ul class="mother">
-   <li>슬기님</li>
-   <li>파이팅</li>
-   <li>같이 고민해봅시다</li>
-</ul>
-<script>
-  const ul = document.querySelector('.mother')
+브라우저는 이벤트를 감지할 수 있으며 이벤트 발생 시에는 통지해 준다. 이 과정을 통해 사용자와 웹페이지는 상호작용(Interaction)이 가능하게 된다.
 
-  const eventhandler = () => {
-    console.log('이것이 이벤트 위임')
-  }
-  ul.addEventListener('click', eventhandler)
-  // ul의 자식 요소인 li들을 클릭하면 '이것이 이벤트 위임' 이라는 말이 나옵니다.
-
-</script>
+<!DOCTYPE html>
+<html>
+<body>
+  <button class="myButton">Click me!</button>
+  <script>
+    document.querySelector('.myButton').addEventListener('click', function () {
+      alert('Clicked!');
+    });
+  </script>
+</body>
+</html>

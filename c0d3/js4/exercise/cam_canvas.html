@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cam_canvas</title>
+</head>
+<body>
+    <video class="video"></video>
+    <canvas class="canvas"></canvas>
+    <div><input class="textInput" type="text"></div>
+    <script>
+
+        const input = document.querySelector('.textInput')
+        const canvas = document.querySelector('.canvas')
+        const context = canvas.getContext('2d')
+        const videoElement = document.querySelector('.video')
+        input.focus()
+        input.addEventListener('keyup', (e) => {
+            if (e.key === 'Enter') {
+                const value = input.value
+                canvas.width = videoElement.videoWidth
+                canvas.height = videoElement.videoHeight
+                context.drawImage(videoElement, 0, 0)
+
+                context.font = "50px Comic Sans MS"
+                context.fillStyle = "tomato"
+
+                context.fillText(value, 100, canvas.height - 100)
+            }
+        })
+
+        navigator.mediaDevices.getUserMedia({
+            video: true,
+            audio: false,
+        }).then((stream) => {
+            videoElement.srcObject = stream
+            videoElement.play()
+        })
+
+    </script>
+
+</body>
+</html>

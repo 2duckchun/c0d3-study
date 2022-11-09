@@ -4,61 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hover-video-player</title>
+    <title></title>
 </head>
 <body>
     <div class="app">
         <button class="startApp">Start</button>
     </div>
-
+    
     <script>
         const app = document.querySelector('.app')
 
         const getMinutesAndSeconds = (vElement) => {
-        let seconds = Math.floor(vElement.currentTime)
-        const min = Math.floor(seconds / 60)
-        seconds = seconds % 60
-        seconds = `${seconds}`
-        if (seconds.length < 2) {
-            seconds = `0${seconds}`
-        }
-        return `${min}:${seconds}`
-        }
-
-        const startApp = () => {
-            app.innerHTML = `
-            <h1 class="display">0:00</h1>
-            <video src="https://songz.c0d3.com/js4/examples/ankurBunny.mp4" class="video"></video>
-            `
-
-        const videoElement = document.querySelector('.video')
-        const displayElement = document.querySelector('.display')
-
-        videoElement.addEventListener('timeupdate', (e) => {
-            displayElement.innerText = getMinutesAndSeconds(videoElement)
-        })
-
-        videoElement.addEventListener('mouseenter', () => {
-            videoElement.play()
-        })
-
-        videoElement.addEventListener('mouseleave', () => {
-            videoElement.pause()
-        })
-        }
-
-        const startButton = document.querySelector('.startApp')
-        startButton.addEventListener('click', startApp)
-
-        </script>
-    <!-- <div class="app">
-        <button class="startApp">Start</button>
-    </div>
-    <script>
-        const app = document.querySelector('.app')
-
-        const getMinutesAndSeconds = (vEle) => {
-            let seconds = Math.floor(vEle.currentTime)
+            let seconds = Math.floor(vElement.currentTime)
             const min = Math.floor(seconds / 60)
             seconds = seconds % 60
             seconds = `${seconds}`
@@ -69,7 +26,7 @@
         }
 
         const startApp = () => {
-            app.innerHTML - `
+            app.innerHTML = `
             <h1 class="display">0:00</h1>
             <video src="https://songz.c0d3.com/js4/examples/ankurBunny.mp4" class="video"></video>
             `
@@ -77,8 +34,7 @@
             const videoElement = document.querySelector('.video')
             const displayElement = document.querySelector('.display')
 
-
-            videoElement.addEventListener('timeupdate', (e) => {
+            videoElement.addEventListener('timeupdate', () => {
                 displayElement.innerText = getMinutesAndSeconds(videoElement)
             })
 
@@ -90,10 +46,8 @@
                 videoElement.pause()
             })
         }
-
         const startButton = document.querySelector('.startApp')
         startButton.addEventListener('click', startApp)
-
-    </script> -->
+    </script>
 </body>
 </html>
