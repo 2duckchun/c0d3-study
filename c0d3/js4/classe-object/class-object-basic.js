@@ -116,6 +116,8 @@ In web design, you should always try to use classes when you have to create mult
 웹 디자인에서, 언제나 클래스를 쓰도록 노력해라. 멀티플 엘리멘트를 만들거나 같은 기능을 하는 엘리멘트를 만들 때.
 
 If you are asked to build a complex HTML page during an interview, 
-your first instinct should be to think about what classes you should create to simplify the problem.
+복잡한 HTML 페이지를 만드는 것에 대해 인터뷰에서 요청받을 경우
 
+your first instinct should be to think about what classes you should create to simplify the problem.
+너의 첫번째 직관은 어떤 것을 클래스로 만들어 코드를 심플화 해야할지에 대한 것이다.
 */
