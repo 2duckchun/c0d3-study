@@ -97,27 +97,17 @@ the player could type this.age on the console to find or even modify the Soldier
 플레이어가 콘솔창에 this.age를 칠 수 있고, solider의 나이를 조절할 수 있다.
 
 For life we used let along with getter and setter functions.
-
+우리가 life를 직접적으로 사용하려면, getter와 setter 펑션을 사용해야 한다.
 
 Usually, you don't want to set properties to this in an object, 
 especially if they contain sensitive data. 
+일반 적으로 민감한 데이터를 포함하는 경우, 우리는 오브젝트에 프로퍼티를 넣어놓고 싶지 않을 것이다.
+
 Otherwise the player could write a.life = 1000 in the console to give themselves more lives!
+그렇지않으면, ㅍ르레이어가 a.life = 1000 이라는 식으로 해서 그들의 라이프를 수정해버릴 것이다.
 
 We didn't need to explicitly set name, 
 because it's an argument and will be available as long as each Solider lives (closure).
 
-*/
 
-/*
-Using classes helps you organize your code better. 
-클래스 문법을 사용하는 것은 코드를 좀 더 괜찮게 만들어준다.
-
-In web design, you should always try to use classes when you have to create multiple elements with the same functionalities. 
-웹 디자인에서, 언제나 클래스를 쓰도록 노력해라. 멀티플 엘리멘트를 만들거나 같은 기능을 하는 엘리멘트를 만들 때.
-
-If you are asked to build a complex HTML page during an interview, 
-복잡한 HTML 페이지를 만드는 것에 대해 인터뷰에서 요청받을 경우
-
-your first instinct should be to think about what classes you should create to simplify the problem.
-너의 첫번째 직관은 어떤 것을 클래스로 만들어 코드를 심플화 해야할지에 대한 것이다.
 */
