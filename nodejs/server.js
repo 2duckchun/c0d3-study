@@ -1,8 +1,8 @@
-const http = require("http");
+const http = require('http')
 
-function rqListener(req, res) {
+const server = http.createServer((req, res) => {
     console.log(req)
-}
+    process.exit()
+})
 
-const server = http.createServer(rqListener);
-server.listen(8080);
+server.listen(8080)
