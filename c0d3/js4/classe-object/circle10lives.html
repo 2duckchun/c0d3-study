@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>circle 10 lives</title>
+    <style>
+        .screen {
+            position: fixed;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            background-color: azure;
+        }
+        .circle {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            border: 2px solid black;
+            background: teal;
+            position: fixed;
+            text-align: center;
+            font-size: 30px;
+            padding-top: 25px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="screen"></div>
+</body>
+<script>
+    const main = document.querySelector('.screen')
+
+    function Circle(x, y) {
+        let life = 10
+        y = y - 50
+        x = x - 50
+        const element = document.createElement('div')
+        element.classList.add('circle')
+        element.style.top = `${y}px`
+        element.style.left = `${x}px`
+        main.append(element)
+        element.innerText = life
+
+        element.addEventListener('click', (e) => {
+            life = life - 1
+            if (life <= 0) {
+                element.remove()
+                e.stopPropagation()
+                return
+            }
+            element.innerText = life
+            e.stopPropagation()
+        })
+    }
+
+    main.addEventListener('click', (e) => {
+        new Circle(e.clientX, e.clientY)
+    })
+</script>
+</html>
