@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>n x n coodinate</title>
+    <style>
+        .box {
+            width: 50px;
+            height: 50px;
+            border: 1px black solid;
+            box-sizing: border-box;
+            display: inline-block;
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body>
+    <input class="colInput" type="number" />
+    <div class="container"></div>
+    <script>
+        const colInput = document.querySelector('.colInput')
+        const container = document.querySelector('.container')
+        colInput.focus()
+        function Box () {
+            const element = document.createElement('div')
+            element.classList.add('box')
+            container.append(element)
+        }
+        const makeBoxes = (value) => {
+            if(!value) {
+                return
+            }
+            new Box ()
+            return makeBoxes(value - 1)
+        }
+
+        colInput.addEventListener('keyup', () => {
+            const value = +colInput.value
+            if(!value) {
+                container.innerHTML = '<p>유효한 값을 넣어주세요.</p>'
+                return
+            }
+            container.innerHTML = ''
+            container.style.width = `${value * 50}px`
+            makeBoxes(value * value)
+        })
+
+    </script>
+</body>
+</html>
