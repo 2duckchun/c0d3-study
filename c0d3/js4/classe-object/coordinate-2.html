@@ -24,15 +24,26 @@
         const container = document.querySelector('.container')
         colInput.focus()
 
-        function Box () {
+        function Box (row, col) {
             const element = document.createElement('div')
             element.classList.add('box')
+            let showing = false
+            element.addEventListener('click', () => {
+                showing = !showing
+                if (showing) {
+                    element.innerText = `r${row}: c${col}`
+                    return
+                }
+                element.innerText = ``
+            })
             container.append(element)
         }
 
         const makeBoxes = (value) => {
             for (let i = 0; i < value; i++) {
-                new Box()
+                for (let j = 0; j < value; j++) {
+                    new Box(i, j)
+                }
             }
         }
 
@@ -44,7 +55,7 @@
             }
             container.innerHTML = ''
             container.style.width = `${value * 50}px`
-            makeBoxes(value * value)
+            makeBoxes(value)
         })
 
     </script>
