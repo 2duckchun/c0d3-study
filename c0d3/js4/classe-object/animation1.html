@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation</title>
+    <link rel="stylesheet" href="https://songz.c0d3.com/js4/exercises/war.css" />
+    <style>
+        .rowContainer {
+            position: relative;
+            height: 100px;
+        }
+        .description {
+            position: absolute;
+            bottom: -30px;
+            color: rgba(100, 20, 20, 1);
+            margin: 0px;
+        }
+        .characterContainer {
+            width: 64px;
+            height: 64px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Class Names</h1>
+    <h2>Warrior</h2>
+    <div class="rowContainer warriorContainer"></div>
+    <h2>Peasant</h2>
+    <div class="rowContainer peasantContainer"></div>
+</body>
+<script>
+    const wContainer = document.querySelector('.warriorContainer')
+    const pContainer = document.querySelector('.peasantContainer')
+
+    const directions = ["up", "down", "left", "right"]
+    directions.forEach((dir, outerIndex) => {
+        [false].forEach((isAttacking, innerIndex) => {
+            const left = 128 * (2 * outerIndex + innerIndex)
+            new Person(left, 0, dir, isAttacking)
+        })
+    })
+
+    directions.forEach((dir, outerIndex) => {
+        [true].forEach((isAttacking, innerIndex) => {
+            const left = 128 * (2 * outerIndex + innerIndex)
+            new Warrior(left, 0, dir, isAttacking)
+        })
+    })
+
+    function Warrior(x, y, direction="down", attacking=false) {
+        const container = document.createElement('div')
+        container.className = 'characterContainer'
+        wContainer.append(container)
+
+        const render = () => {
+            let attackClass = ''
+            let dot = ''
+            if (attacking) {
+                attackClass= 'attack'
+                dot = '.'
+            }
+            container.style.top = `${y}px`
+            container.style.left = `${x}px`
+            container.innerHTML = `
+            <div class="character warrior ${direction} ${attackClass}"></div>
+            <p class="description">.character.warrior.${direction}${dot}${attackClass}</p>
+            `
+            setTimeout(() => {
+                attacking = !attacking
+                render()
+            }, 500)
+        }
+        render()
+    }
+
+    function Person(x, y, direction="down", attacking=false) {
+        const container = document.createElement('div')
+        container.className = 'characterContainer'
+        pContainer.append(container)
+
+        container.style.top = `${y}px`
+        container.style.left = `${x}px`
+        container.innerHTML = `
+            <div class="character">
+        `
+
+        const render = () => {
+            container.style.top = `${y}px`
+            container.style.left = `${x}px`
+            container.innerHTML = `
+                <div class="character ${direction}">
+                <p class="description">.character.${direction}</p>
+            `
+        }
+        render()
+    }
+</script>
+</html>
